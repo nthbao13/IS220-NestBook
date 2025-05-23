@@ -315,3 +315,4 @@ C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\b
 C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\bin\Debug\net8.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\bin\Debug\net8.0\runtimes\win-x86\native\e_sqlite3.dll
 C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\obj\Debug\net8.0\BookNest.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\obj\Debug\net8.0\BookNest.sourcelink.json

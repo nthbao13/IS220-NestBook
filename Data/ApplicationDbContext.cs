@@ -15,7 +15,9 @@ namespace BookNest.Data
 		protected override void OnModelCreating(ModelBuilder builder)
 		{
 			base.OnModelCreating(builder);
-		}
+			builder.Entity<ApplicationUser>().ToTable("Users");
+			builder.Entity<ApplicationRole>().ToTable("Roles");
+        }
 
 	}
 }
