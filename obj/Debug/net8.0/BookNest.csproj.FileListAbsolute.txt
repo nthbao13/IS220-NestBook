@@ -266,3 +266,5 @@ C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\o
 C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\obj\Debug\net8.0\BookNest.pdb
 C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\obj\Debug\net8.0\BookNest.genruntimeconfig.cache
 C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\obj\Debug\net8.0\ref\BookNest.dll
+C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\bin\Debug\net8.0\google_api_key.json
+C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.Google.dll

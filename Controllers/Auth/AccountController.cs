@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
+using System.Runtime;
+using System.Security.Claims;
 
 namespace BookNest.Controllers.Auth
 {
@@ -302,6 +304,81 @@ namespace BookNest.Controllers.Auth
             }
 
             return View(model);
+        }
+
+
+        [HttpGet]
+        public IActionResult ExternalLogin(string provider)
+        {
+            var redirectUrl = Url.Action("ExternalLoginCallback", "Account");
+            var properties = _signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl);
+            return Challenge(properties, provider);
+        }
+
+        // Google callback trả về sau khi đăng nhập thành công
+        [HttpGet]
+        public async Task<IActionResult> ExternalLoginCallback()
+        {
+            var info = await _signInManager.GetExternalLoginInfoAsync();
+            if (info == null)
+                return RedirectToAction("Login");
+
+            // Thử đăng nhập user với external login info
+            var signInResult = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, isPersistent: true);
+            if (signInResult.Succeeded)
+            {
+                // Đăng nhập thành công
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                // Nếu user chưa có thì tạo user mới
+                var email = info.Principal.FindFirstValue(ClaimTypes.Email);
+                if (email != null)
+                {
+                    // Tìm user trong db theo email
+                    var existingUser = await _userManager.FindByEmailAsync(email);
+                    if (existingUser != null)
+                    {
+                        // Liên kết external login nếu chưa liên kết
+                        var logins = await _userManager.GetLoginsAsync(existingUser);
+                        if (!logins.Any(l => l.LoginProvider == info.LoginProvider && l.ProviderKey == info.ProviderKey))
+                        {
+                            var addLoginResult = await _userManager.AddLoginAsync(existingUser, info);
+                        }
+                        // Đăng nhập user này
+                        await _signInManager.SignInAsync(existingUser, isPersistent: true);
+                        return RedirectToAction("Index", "Home");
+                    }
+
+                    var identityUser = new IdentityUser<int> { UserName = email, Email = email, EmailConfirmed = true };
+                    var createResult = await _userManager.CreateAsync(identityUser);
+                    if (createResult.Succeeded)
+                    {
+                        var roleResult = await _userManager.AddToRoleAsync(identityUser, "User");
+                        var user = new Users
+                        {
+                            FirstName = info.Principal.FindFirstValue(ClaimTypes.GivenName),
+                            LastName = info.Principal.FindFirstValue(ClaimTypes.Surname),
+                            Email = info.Principal.FindFirstValue(ClaimTypes.Email),
+                            IdentityUserId = identityUser.Id,
+                        };
+
+                        _context.Users.Add(user);
+                        await _context.SaveChangesAsync();
+
+                        var addLoginResult = await _userManager.AddLoginAsync(identityUser, info);
+                        if (addLoginResult.Succeeded)
+                        {
+                            await _signInManager.SignInAsync(identityUser, isPersistent: false);
+                            return RedirectToAction("Index", "Home");
+                        }
+                    }
+                }
+
+                ViewBag.ErrorMessage = "Đăng nhập Google thất bại";
+                return View("Login");
+            }
         }
 
         [HttpGet]

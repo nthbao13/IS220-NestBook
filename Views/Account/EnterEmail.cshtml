@@ -95,7 +95,10 @@
                     <button type="submit" class="btn btn-submit">Submit</button>
                 </form>
                 <div class="social-login text-center mt-3">
-                    <p class="text-color">Or login with <a class="fw-bold" href="#">Google</a></p>
+                    <p class="text-muted">
+                        Or login with
+                        <a asp-controller="Account" asp-action="ExternalLogin" asp-route-provider="Google" class="fw-bold text-color ms-1 ps-sm">Google</a>
+                    </p>
                 </div>
             </div>
             <!-- Right Section: Illustration Placeholder -->

@@ -106,9 +106,11 @@
                 <button type="submit" class="btn btn-login w-50">LOGIN</button>
                 <a asp-action="Register" class="btn btn-signup w-50">SIGN UP</a>
             </div>
-            <p class="text-muted">Or login with 
-                <a href="#" class="fw-bold text-color ms-1 ps-sm">Google</a>
+            <p class="text-muted">
+                Or login with
+                <a asp-controller="Account" asp-action="ExternalLogin" asp-route-provider="Google" class="fw-bold text-color ms-1 ps-sm">Google</a>
             </p>
+
         </div>
         <!-- Right Section: Illustration -->
         <div class="illustration-section col-md-6">
