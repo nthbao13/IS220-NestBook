@@ -16,7 +16,86 @@ html {
   position: relative;
   min-height: 100%;
 }
-
+/* --------- _Layout.cshtml ---------- */
 body {
-  margin-bottom: 60px;
+    font-family: 'Roboto', sans-serif;
 }
+
+.primary-color {
+    color: #4C2900;
+}
+
+.navbar-nav .nav-link {
+    position: relative;
+}
+
+    .navbar-nav .nav-link::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 4px;
+        width: 0;
+        background-color: #72513f;
+        transition: width 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover::after {
+        width: 100%;
+    }
+
+footer {
+    background-color: #391F00;
+    color: #FFF
+}
+
+footer a i {
+    text-decoration: none;
+    color: #FFF
+}
+
+footer ul {
+    padding: 0;
+    margin: 0;
+}
+
+footer li {
+    list-style: none;
+}
+
+footer li a {
+    color: #fff;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+/* --------- About.cshtml ---------- */
+
+.about-page {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    display: block;
+    position: relative;
+    top: -1px;
+}
+
+.welcome-section {
+    background-color: #6E4B3A;
+    padding: 92px;
+}
+
+.description-section {
+    background-color: #FFFAF5;
+    color: #4B330B;
+    padding: 92px;
+    margin: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+    .description-section img {
+        border-radius: 8px;
+        padding: 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }

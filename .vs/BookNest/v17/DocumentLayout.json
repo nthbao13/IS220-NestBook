@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|c:\\users\\7713b\\onedrive\\documents\\onedrive\\computer\\uit\\hk6\\framework\\booknest\\views\\account\\resetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|solutionrelative:views\\account\\resetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|c:\\users\\7713b\\onedrive\\documents\\onedrive\\computer\\uit\\hk6\\framework\\booknest\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|c:\\users\\7713b\\onedrive\\documents\\onedrive\\computer\\uit\\hk6\\framework\\booknest\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|solutionrelative:views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|c:\\users\\7713b\\onedrive\\documents\\onedrive\\computer\\uit\\hk6\\framework\\booknest\\views\\account\\enteremail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|solutionrelative:views\\account\\enteremail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|c:\\users\\7713b\\onedrive\\documents\\onedrive\\computer\\uit\\hk6\\framework\\booknest\\views\\account\\enterotp.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|solutionrelative:views\\account\\enterotp.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|c:\\users\\7713b\\onedrive\\documents\\onedrive\\computer\\uit\\hk6\\framework\\booknest\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|solutionrelative:wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,58 +18,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ResetPassword.cshtml",
-              "DocumentMoniker": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\Views\\Account\\ResetPassword.cshtml",
-              "RelativeDocumentMoniker": "Views\\Account\\ResetPassword.cshtml",
-              "ToolTip": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\Views\\Account\\ResetPassword.cshtml",
-              "RelativeToolTip": "Views\\Account\\ResetPassword.cshtml",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAAAGoAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-24T11:35:20.178Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Register.cshtml",
-              "DocumentMoniker": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\Views\\Account\\Register.cshtml",
-              "RelativeDocumentMoniker": "Views\\Account\\Register.cshtml",
-              "ToolTip": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\Views\\Account\\Register.cshtml",
-              "RelativeToolTip": "Views\\Account\\Register.cshtml",
-              "ViewState": "AgIAAGAAAAAAAAAAAAAAAH0AAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-24T11:34:54.736Z",
+              "Title": "site.css",
+              "DocumentMoniker": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\site.css",
+              "ToolTip": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "wwwroot\\css\\site.css",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAAD8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-05-24T18:13:25.338Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "EnterOTP.cshtml",
-              "DocumentMoniker": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\Views\\Account\\EnterOTP.cshtml",
-              "RelativeDocumentMoniker": "Views\\Account\\EnterOTP.cshtml",
-              "ToolTip": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\Views\\Account\\EnterOTP.cshtml",
-              "RelativeToolTip": "Views\\Account\\EnterOTP.cshtml",
-              "ViewState": "AgIAAFoAAAAAAAAAAAAAAG0AAAAYAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAF4AAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-24T11:34:29.446Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "EnterEmail.cshtml",
-              "DocumentMoniker": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\Views\\Account\\EnterEmail.cshtml",
-              "RelativeDocumentMoniker": "Views\\Account\\EnterEmail.cshtml",
-              "ToolTip": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\Views\\Account\\EnterEmail.cshtml",
-              "RelativeToolTip": "Views\\Account\\EnterEmail.cshtml",
-              "ViewState": "AgIAAE4AAAAAAAAAAAAAAGQAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-24T11:34:18.106Z",
+              "WhenOpened": "2025-05-24T16:11:40.43Z",
               "EditorCaption": ""
             }
           ]

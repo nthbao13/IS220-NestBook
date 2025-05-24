@@ -13,12 +13,24 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\images\\About-1.png",
+      "PackagePath": "staticwebassets\\images\\About-1.png"
+    },
+    {
+      "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\images\\About-2.jpg",
+      "PackagePath": "staticwebassets\\images\\About-2.jpg"
+    },
+    {
       "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\images\\Illustration.png",
       "PackagePath": "staticwebassets\\images\\Illustration.png"
     },
     {
       "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\images\\logo-1.png",
       "PackagePath": "staticwebassets\\images\\logo-1.png"
+    },
+    {
+      "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\images\\logo-2.png",
+      "PackagePath": "staticwebassets\\images\\logo-2.png"
     },
     {
       "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\js\\site.js",
