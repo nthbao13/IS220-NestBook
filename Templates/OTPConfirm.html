@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mã OTP Xác Nhận</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 0;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        .container {
+            background: white;
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            color: #333;
+        }
+
+        h1 {
+            color: #4a90e2;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .otp-code {
+            font-size: 28px;
+            font-weight: 700;
+            color: #222;
+            letter-spacing: 6px;
+            margin: 20px 0;
+            padding: 15px 0;
+            border: 2px dashed #4a90e2;
+            text-align: center;
+            user-select: all;
+        }
+
+        .footer {
+            font-size: 14px;
+            color: #999;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        @media screen and (max-width: 480px) {
+            .container {
+                margin: 20px 15px;
+                padding: 20px;
+            }
+
+            .otp-code {
+                font-size: 24px;
+                letter-spacing: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mã OTP xác nhận của bạn</h1>
+        <p>Chào bạn,</p>
+        <p>Mã OTP để xác nhận yêu cầu của bạn là:</p>
+        <div class="otp-code">{OTP}</div>
+        <p>Vui lòng không chia sẻ mã này với bất kỳ ai. Mã sẽ hết hạn sau 10 phút.</p>
+        <p>Nếu bạn không thực hiện yêu cầu này, hãy bỏ qua email này hoặc liên hệ với bộ phận hỗ trợ.</p>
+
+        <div class="footer">
+            &copy; 2025 Công ty của bạn. Mọi quyền được bảo lưu.
+        </div>
+    </div>
+</body>
+</html>

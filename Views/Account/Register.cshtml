@@ -64,6 +64,7 @@
 </head>
 <body>
     <form asp-action="Register" method="POST" class="signup-container d-flex flex-column flex-md-row">
+
         <!-- Left Section: Illustration -->
         <div class="illustration-section col-md-4">
             <img src="~/images/Illustration.png" alt="Illustration"
@@ -129,4 +130,5 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    @await Html.PartialAsync("_ToastNoti")
 }

@@ -1,7 +1,10 @@
-﻿@{
+﻿@using BookNest.Models.ViewModel
+@{
     ViewBag.Title = "Nhập OTP - BookNest";
     Layout = null; /* Hoặc Layout = "~/Views/Shared/_LayoutLogin.cshtml"; nếu bạn có layout riêng cho trang login */
 }
+
+@model EnterOTPViewModel
 
 <!DOCTYPE html>
 <html lang="en">
@@ -83,15 +86,21 @@
                 </a>
                 <h4 class="text-color">Verify code</h4>
                 <p class="mt-2 mb-2 text-color">An authentication code has been seen to your email</p>
-                <form method="POST" class="mt-4">
+                <form method="POST" asp-action="EnterOTP" class="mt-4">
                     <div class="mb-3 ">
                         <label for="otp" class="form-label fw-bold text-color">Enter code</label>
-                        <input type="password" class="form-control" id="email" placeholder="Enter your OTP">
+                        <input type="password" class="form-control" asp-for="Otp" placeholder="Enter your OTP">
+                        <span class="text-danger" asp-validation-for="Otp"></span>
                     </div>
                     <span class="mt-2 mb-2 text-color">
                         Did't receive a code? 
                     </span>
-                    <a href="#" class="text-decoration-none mt-2 mb-2 text-color fw-bold">Resend</a>
+                    @{
+                        var email = Context.Session.GetString("email") ?? "";
+                    }
+                    <a asp-action="ResendOtp" asp-route-email="@email" 
+                    class="text-decoration-none mt-2 mb-2 text-color fw-bold">Resend</a>
+
                     <button type="submit" class="btn btn-submit mt-4">Submit</button>
                 </form>
                 <div class="social-login text-center mt-3">
@@ -112,3 +121,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    @await Html.PartialAsync("_ToastNoti.cshtml")
+}
