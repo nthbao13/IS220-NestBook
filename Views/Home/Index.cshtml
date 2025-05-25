@@ -2,7 +2,325 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+
+<div class="container-index">
+    <section class="container-welcome-section row">
+        <div class="content col-5">
+            <h1 class="fw-bolder mb-2">Chào mừng đến với BookNest</h1>
+            <p class="mt-4">Khám phá thế giới sách đa dạng và phong phú với các tựa sách mới nhất, bán chạy nhất, và nhiều ưu đãi hấp dẫn.</p>
+
+            <a asp-action="Index" asp-controller="Explore" class="btn btn-color pe-4 ps-4 pt-2 pb-2 text-white fw-bold mt-3">Khám phá ngay</a>
+        </div>
+
+		<div class="container-img col-6">
+			<img src="~/images/main-book3.png" alt="Book" class="img-book book3" />
+            <img src="~/images/main-book1.png" alt="Book" class="img-book book1" />
+            <img src="~/images/main-book2.png" alt="Book" class="img-book book2" />
+            <img src="~/images/main-book4.png" alt="Book" class="img-book book4" />
+            <img src="~/images/main-book5.png" alt="Book" class="img-book book5" />
+        </div>
+
+    </section>
+
+    <!-- Search Section -->
+    <div class="search-section">
+        <div class="search-container">
+            <input type="text" class="form-control search-input" placeholder="Tìm kiếm sách">
+            <button class="search-btn">Tìm kiếm</button>
+        </div>
+    </div>
+
+    <!-- Category Section -->
+    <div class="category-section">
+        <h4 style="text-align: center; margin-bottom: 30px; color: #4C2900;">Danh mục sản phẩm</h4>
+        <div class="row justify-content-center" id="categories">
+            <!-- Categories will be populated by JavaScript -->
+            <div class="col-md-2 col-4 category-item">
+                <img src="~/images/vanhoc.png" alt="Van hoc" class="category-icon">
+                <div style="font-size: 14px; color: #4C2900;">Văn học</div>
+            </div>
+            <div class="col-md-2 col-4 category-item">
+                <img src="~/images/kinhte.png" alt="Kinh te" class="category-icon">
+                <div style="font-size: 14px; color: #4C2900;">Kinh tế</div>
+            </div>
+            <div class="col-md-2 col-4 category-item">
+                <img src="~/images/tamly.png" alt="Tam ly" class="category-icon">
+                <div style="font-size: 14px; color: #4C2900;">Tâm lý - Kỹ năng sống</div>
+            </div>
+            <div class="col-md-2 col-4 category-item">
+                <img src="~/images/thieunhi.png" alt="Thiếu nhi" class="category-icon">
+                <div style="font-size: 14px; color: #4C2900;">Thiếu nhi</div>
+            </div>
+            <div class="col-md-2 col-4 category-item">
+                <img src="~/images/tieusu.png" alt="Tiểu sử - Hồi ký" class="category-icon">
+                <div style="font-size: 14px; color: #4C2900;">Tiểu sử - Hồi ký</div>
+            </div>
+            <div class="col-md-2 col-4 category-item">
+                <img src="~/images/ngoaingu.png" alt="Sách học Ngoại ngữ" class="category-icon">
+                <div style="font-size: 14px; color: #4C2900;">Sách học Ngoại ngữ</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hot Books Section -->
+    <div class="section-header d-flex justify-content-between align-items-center">
+        <h3 class="section-title">Sách nổi bật</h3>
+        <div class="category-tabs" id="hotBookTabs">
+            <!-- Tabs will be populated by JavaScript -->
+        </div>
+        <a href="#" class="view-all">Xem tất cả <i class="fas fa-chevron-right"></i></a>
+    </div>
+
+    <div class="carousel-container">
+        <button class="carousel-btn prev" onclick="scrollCarousel('hotBooks', -1)">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="row" id="hotBooks">
+            <!-- Hot books will be populated by JavaScript -->
+        </div>
+        <button class="carousel-btn next" onclick="scrollCarousel('hotBooks', 1)">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+
+    <!-- Literature Section -->
+    <div class="section-header d-flex justify-content-between align-items-center">
+        <h3 class="section-title">Văn học</h3>
+        <div class="category-tabs" id="literatureTabs">
+            <!-- Tabs will be populated by JavaScript -->
+        </div>
+        <a href="#" class="view-all">Xem tất cả <i class="fas fa-chevron-right"></i></a>
+    </div>
+
+    <div class="carousel-container">
+        <button class="carousel-btn prev" onclick="scrollCarousel('literature', -1)">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="row" id="literature">
+            <!-- Literature books will be populated by JavaScript -->
+        </div>
+        <button class="carousel-btn next" onclick="scrollCarousel('literature', 1)">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+
+    <!-- Economics Section -->
+    <div class="section-header d-flex justify-content-between align-items-center">
+        <h3 class="section-title">Kinh tế</h3>
+        <div class="category-tabs" id="economicsTabs">
+            <!-- Tabs will be populated by JavaScript -->
+        </div>
+        <a href="#" class="view-all">Xem tất cả <i class="fas fa-chevron-right"></i></a>
+    </div>
+
+    <div class="carousel-container">
+        <button class="carousel-btn prev" onclick="scrollCarousel('economics', -1)">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="row" id="economics">
+            <!-- Economics books will be populated by JavaScript -->
+        </div>
+        <button class="carousel-btn next" onclick="scrollCarousel('economics', 1)">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
 </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script>
+    // JSON Data
+    const bookData = {
+        categories: [
+            { id: 1, name: "Văn học", icon: "~/images/vanhoc.png" },
+            { id: 2, name: "Kinh tế", icon: "~/images/kinhte.png" },
+            { id: 3, name: "Tâm lý - Kỹ năng sống", icon: "~/images/tamly.png" },
+            { id: 4, name: "Thiếu nhi", icon: "~/images/thieunhi.png" },
+            { id: 5, name: "Tiểu sử - Hồi ký", icon: "~/images/tieusu.png" },
+            { id: 6, name: "Sách học Ngoại ngữ", icon: "~/images/ngoaingu.png" }
+        ],
+
+        hotBooks: [
+            {
+                id: 1, title: "Người Đàn Ông Mang Tên Ove (Tái Bản)", author: "Fredrik Backman",
+                price: "135.000đ", originalPrice: "150.000đ", discount: "10%",
+                image: "~/images/book.png", rating: 5, category: "Văn học"
+            },
+            {
+                id: 2, title: "Người Đàn Ông Mang Tên Ove (Tái Bản)", author: "Fredrik Backman",
+                price: "135.000đ", originalPrice: "150.000đ", discount: "10%",
+                image: "~/images/book.png", rating: 5, category: "Văn học"
+            },
+            {
+                id: 3, title: "Người Đàn Ông Mang Tên Ove (Tái Bản)", author: "Fredrik Backman",
+                price: "135.000đ", originalPrice: "150.000đ", discount: "10%",
+                image: "~/images/book.png", rating: 5, category: "Kinh tế"
+            },
+            {
+                id: 4, title: "Người Đàn Ông Mang Tên Ove (Tái Bản)", author: "Fredrik Backman",
+                price: "135.000đ", originalPrice: "150.000đ", discount: "10%",
+                image: "~/images/book.png", rating: 5, category: "Tâm lý - Kỹ năng sống"
+            },
+            {
+                id: 5, title: "Người Đàn Ông Mang Tên Ove (Tái Bản)", author: "Fredrik Backman",
+                price: "135.000đ", originalPrice: "150.000đ", discount: "10%",
+                image: "~/images/book.png", rating: 5, category: "Thiếu nhi"
+            },
+            {
+                id: 6, title: "Người Đàn Ông Mang Tên Ove (Tái Bản)", author: "Fredrik Backman",
+                price: "135.000đ", originalPrice: "150.000đ", discount: "10%",
+                image: "~/images/book.png", rating: 5, category: "Tiểu sử - Hồi ký"
+            }
+        ],
+
+        literature: [
+            {
+                id: 11, title: "Người Đàn Ông Mang Tên Ove (Tái Bản)", author: "Fredrik Backman",
+                price: "135.000đ", originalPrice: null, discount: null,
+                image: "~/images/book.png", rating: 5
+            },
+            {
+                id: 12, title: "Người Đàn Ông Mang Tên Ove (Tái Bản)", author: "Fredrik Backman",
+                price: "135.000đ", originalPrice: null, discount: null,
+                image: "~/images/book.png", rating: 5
+            },
+            {
+                id: 13, title: "Người Đàn Ông Mang Tên Ove (Tái Bản)", author: "Fredrik Backman",
+                price: "135.000đ", originalPrice: null, discount: null,
+                image: "~/images/book.png", rating: 5
+            },
+            {
+                id: 14, title: "Người Đàn Ông Mang Tên Ove (Tái Bản)", author: "Fredrik Backman",
+                price: "135.000đ", originalPrice: null, discount: null,
+                image: "~/images/book.png", rating: 5
+            },
+            {
+                id: 15, title: "Người Đàn Ông Mang Tên Ove (Tái Bản)", author: "Fredrik Backman",
+                price: "135.000đ", originalPrice: null, discount: null,
+                image: "~/images/book.png", rating: 5
+            }
+        ],
+
+        economics: [
+            {
+                id: 21, title: "Người Đàn Ông Mang Tên Ove (Tái Bản)", author: "Fredrik Backman",
+                price: "135.000đ", originalPrice: "150.000đ", discount: "10%",
+                image: "~/images/book.png", rating: 5
+            },
+            {
+                id: 22, title: "Người Đàn Ông Mang Tên Ove (Tái Bản)", author: "Fredrik Backman",
+                price: "135.000đ", originalPrice: "150.000đ", discount: "10%",
+                image: "~/images/book.png", rating: 5
+            },
+            {
+                id: 23, title: "Người Đàn Ông Mang Tên Ove (Tái Bản)", author: "Fredrik Backman",
+                price: "135.000đ", originalPrice: "150.000đ", discount: "10%",
+                image: "~/images/book.png", rating: 5
+            },
+            {
+                id: 24, title: "Người Đàn Ông Mang Tên Ove (Tái Bản)", author: "Fredrik Backman",
+                price: "135.000đ", originalPrice: "150.000đ", discount: "10%",
+                image: "~/images/book.png", rating: 5
+            },
+            {
+                id: 25, title: "Người Đàn Ông Mang Tên Ove (Tái Bản)", author: "Fredrik Backman",
+                price: "135.000đ", originalPrice: "150.000đ", discount: "10%",
+                image: "~/images/book.png", rating: 5
+            }
+        ]
+    };
+
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', function () {
+        renderHotBookTabs();
+        renderLiteratureTabs();
+        renderEconomicsTabs();
+        renderBooks('hotBooks', bookData.hotBooks);
+        renderBooks('literature', bookData.literature);
+        renderBooks('economics', bookData.economics);
+    });
+
+    function renderHotBookTabs() {
+        const tabs = ['Văn học', 'Kinh tế', 'Tâm lý - Kỹ năng sống', 'Thiếu nhi', 'Tiểu sử - Hồi ký'];
+        const container = document.getElementById('hotBookTabs');
+        container.innerHTML = tabs.map((tab, index) => `
+                    <button class="category-tab ${index === 0 ? 'active' : ''}" onclick="filterHotBooks('${tab}')">${tab}</button>
+                `).join('');
+    }
+
+    function renderLiteratureTabs() {
+        const tabs = ['Thơ thuyết', 'Truyện ngắn', 'Tiểu thuyết', 'Truyện tranh', 'Hồi ký', 'Phê bình', 'Truyện cổ tích', 'Thơ ca', 'Tùy bút ngôn ôn', 'Tiểu sử - Hồi ký'];
+        const container = document.getElementById('literatureTabs');
+        container.innerHTML = tabs.slice(0, 5).map((tab, index) => `
+                    <button class="category-tab ${index === 0 ? 'active' : ''}" onclick="filterLiterature('${tab}')">${tab}</button>
+                `).join('');
+    }
+
+    function renderEconomicsTabs() {
+        const tabs = ['Quản trị - Lãnh đạo', 'Phân tích - Đầu tư chứng khoán', 'Bán hàng', 'Phân tích kinh tế', 'Kinh tế vĩ mô', 'Dân lý'];
+        const container = document.getElementById('economicsTabs');
+        container.innerHTML = tabs.slice(0, 5).map((tab, index) => `
+                    <button class="category-tab ${index === 0 ? 'active' : ''}" onclick="filterEconomics('${tab}')">${tab}</button>
+                `).join('');
+    }
+
+    function renderBooks(containerId, books) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = books.map(book => `
+                    <div class="col-md-2 col-6 carousel-item">
+                        <div class="card book-card position-relative">
+                            ${book.discount ? `<span class="discount-badge">${book.discount}</span>` : ''}
+                            <img src="${book.image}" alt="${book.title}" class="book-image">
+                            <div class="card-body p-3">
+                                <h6 class="book-title">${book.title}</h6>
+                                <p class="book-author">${book.author}</p>
+                                <div class="rating">
+                                    ${Array(book.rating).fill('<i class="fas fa-star"></i>').join('')}
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    ${book.originalPrice ? `<span class="original-price">${book.originalPrice}</span>` : ''}
+                                    <span class="book-price">${book.price}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+    }
+
+    // Filter functions
+    function filterHotBooks(category) {
+        // Update active tab
+        document.querySelectorAll('#hotBookTabs .category-tab').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        event.target.classList.add('active');
+
+        // Filter and render books
+        const filteredBooks = bookData.hotBooks.filter(book => book.category === category);
+        renderBooks('hotBooks', filteredBooks.length > 0 ? filteredBooks : bookData.hotBooks);
+    }
+
+    function filterLiterature(category) {
+        document.querySelectorAll('#literatureTabs .category-tab').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        event.target.classList.add('active');
+        renderBooks('literature', bookData.literature);
+    }
+
+    function filterEconomics(category) {
+        document.querySelectorAll('#economicsTabs .category-tab').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        event.target.classList.add('active');
+        renderBooks('economics', bookData.economics);
+    }
+
+    // Carousel scroll function
+    function scrollCarousel(containerId, direction) {
+        const container = document.getElementById(containerId);
+        const scrollAmount = 220 * direction;
+        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+</script>

@@ -1,4 +1,4 @@
-html {
+﻿html {
   font-size: 14px;
 }
 
@@ -19,6 +19,7 @@ html {
 /* --------- _Layout.cshtml ---------- */
 body {
     font-family: 'Roboto', sans-serif;
+    background-color: #FFFAF5;
 }
 
 .primary-color {
@@ -99,3 +100,99 @@ footer li a {
         padding: 0;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
+
+/* General reset for smooth animations */
+.about-page * {
+    animation-fill-mode: both;
+}
+
+/* 1. Top Image Animation: Fade-in and Scale */
+.about-page img.w-100 {
+    animation: fadeInScale 1s ease-out;
+}
+
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* 2. Welcome Section: Sequential Fade-in and Slide-up */
+.welcome-section h3 {
+    animation: fadeInUp 0.8s ease-out 0.2s;
+}
+
+.welcome-section p {
+    animation: fadeInUp 0.8s ease-out 0.4s;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 3. Slogan Animation: Subtle Pulse */
+.welcome-section h5 {
+    animation: pulse 1.5s ease-in-out 0.6s;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* 4. Description Section: Staggered Slide-in */
+.description-section p {
+    animation: slideInLeft 0.8s ease-out 0.8s;
+}
+
+.description-section img {
+    animation: slideInRight 0.8s ease-out 1s;
+}
+
+@keyframes slideInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Ensure animations only run once on page load */
+.about-page [class*="animation"] {
+    animation-iteration-count: 1;
+}

@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets\\BookNest.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\css\\home.css",
+      "PackagePath": "staticwebassets\\css\\home.css"
+    },
+    {
+      "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\css\\product.css",
+      "PackagePath": "staticwebassets\\css\\product.css"
+    },
+    {
       "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -25,12 +33,60 @@
       "PackagePath": "staticwebassets\\images\\Illustration.png"
     },
     {
+      "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\images\\book.png",
+      "PackagePath": "staticwebassets\\images\\book.png"
+    },
+    {
+      "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\images\\kinhte.png",
+      "PackagePath": "staticwebassets\\images\\kinhte.png"
+    },
+    {
       "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\images\\logo-1.png",
       "PackagePath": "staticwebassets\\images\\logo-1.png"
     },
     {
       "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\images\\logo-2.png",
       "PackagePath": "staticwebassets\\images\\logo-2.png"
+    },
+    {
+      "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\images\\main-book1.png",
+      "PackagePath": "staticwebassets\\images\\main-book1.png"
+    },
+    {
+      "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\images\\main-book2.png",
+      "PackagePath": "staticwebassets\\images\\main-book2.png"
+    },
+    {
+      "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\images\\main-book3.png",
+      "PackagePath": "staticwebassets\\images\\main-book3.png"
+    },
+    {
+      "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\images\\main-book4.png",
+      "PackagePath": "staticwebassets\\images\\main-book4.png"
+    },
+    {
+      "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\images\\main-book5.png",
+      "PackagePath": "staticwebassets\\images\\main-book5.png"
+    },
+    {
+      "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\images\\ngoaingu.png",
+      "PackagePath": "staticwebassets\\images\\ngoaingu.png"
+    },
+    {
+      "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\images\\tamly.png",
+      "PackagePath": "staticwebassets\\images\\tamly.png"
+    },
+    {
+      "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\images\\thieunhi.png",
+      "PackagePath": "staticwebassets\\images\\thieunhi.png"
+    },
+    {
+      "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\images\\tieusu.png",
+      "PackagePath": "staticwebassets\\images\\tieusu.png"
+    },
+    {
+      "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\images\\vanhoc.png",
+      "PackagePath": "staticwebassets\\images\\vanhoc.png"
     },
     {
       "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\js\\site.js",
