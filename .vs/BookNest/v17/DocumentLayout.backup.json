@@ -3,8 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|c:\\users\\7713b\\onedrive\\documents\\onedrive\\computer\\uit\\hk6\\framework\\booknest\\wwwroot\\js\\add_to_cart.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|solutionrelative:wwwroot\\js\\add_to_cart.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|c:\\users\\7713b\\onedrive\\documents\\onedrive\\computer\\uit\\hk6\\framework\\booknest\\views\\books\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|solutionrelative:views\\books\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|c:\\users\\7713b\\onedrive\\documents\\onedrive\\computer\\uit\\hk6\\framework\\booknest\\views\\books\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|solutionrelative:views\\books\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|c:\\users\\7713b\\onedrive\\documents\\onedrive\\computer\\uit\\hk6\\framework\\booknest\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|c:\\users\\7713b\\onedrive\\documents\\onedrive\\computer\\uit\\hk6\\framework\\booknest\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|solutionrelative:controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|c:\\users\\7713b\\onedrive\\documents\\onedrive\\computer\\uit\\hk6\\framework\\booknest\\views\\cart\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|solutionrelative:views\\cart\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +39,79 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "add_to_cart.js",
+              "DocumentMoniker": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\js\\add_to_cart.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\add_to_cart.js",
+              "ToolTip": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\js\\add_to_cart.js",
+              "RelativeToolTip": "wwwroot\\js\\add_to_cart.js",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAgwEkAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-05-28T18:45:44.939Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\Views\\Books\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Books\\Index.cshtml",
+              "ToolTip": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\Views\\Books\\Index.cshtml",
+              "RelativeToolTip": "Views\\Books\\Index.cshtml",
+              "ViewState": "AgIAAK8AAAAAAAAAAADwv74AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-28T18:43:37.916Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAADwAAABzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-28T18:42:03.822Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\Views\\Books\\Details.cshtml",
               "RelativeDocumentMoniker": "Views\\Books\\Details.cshtml",
               "ToolTip": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\Views\\Books\\Details.cshtml",
               "RelativeToolTip": "Views\\Books\\Details.cshtml",
-              "ViewState": "AgIAALoAAAAAAAAAAAAAANYAAABbAAAAAAAAAA==",
+              "ViewState": "AgIAAMMAAAAAAAAAAADwv9YAAAB2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-28T15:53:56.988Z",
+              "WhenOpened": "2025-05-28T18:30:40.004Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\Views\\Cart\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Cart\\Index.cshtml",
+              "ToolTip": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\Views\\Cart\\Index.cshtml",
+              "RelativeToolTip": "Views\\Cart\\Index.cshtml",
+              "ViewState": "AgIAAJkAAAAAAAAAAAAAwNoAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-28T16:34:56.05Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CartController.cs",
+              "DocumentMoniker": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\Controllers\\CartController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CartController.cs",
+              "ToolTip": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\Controllers\\CartController.cs",
+              "RelativeToolTip": "Controllers\\CartController.cs",
+              "ViewState": "AgIAAHYAAAAAAAAAAAAAAJQAAABTAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T16:22:54.477Z",
               "EditorCaption": ""
             }
           ]

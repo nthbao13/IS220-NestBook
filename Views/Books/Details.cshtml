@@ -32,7 +32,7 @@
 					</div>
 
 					<!-- Add to Cart Button -->
-                    <button class="btn add-to-cart require-login" type="button">
+                    <button class="btn add-to-cart require-login" data-product-id="@Model.Book.Id" type="button">
 						<i class="fas fa-shopping-cart text-white me-2"></i> 
 						<span class="text-white">Thêm vào giỏ hàng</span>
 					</button>
@@ -212,7 +212,7 @@
                                         <span class="text-decoration-line-through text-muted" style="font-size: 0.8rem">@book.FirstPrice.ToString("N0")₫</span>
                                     </p>
 
-                                    <button class="btn cart-button mt-0 col-2 require-login">
+                                    <button class="btn cart-button mt-0 col-2 require-login" data-product-id="@book.Id">
                                         <i class="bi bi-cart-plus fw-bold text-white"></i>
                                     </button>
                                 </div>

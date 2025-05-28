@@ -1,0 +1,219 @@
+﻿@model List<BookNest.Models.MappingDBModel.Cart>
+
+@{
+    ViewData["Title"] = "Giỏ Hàng";
+    decimal totalAmount = 0;
+    int totalItems = 0;
+
+    if (Model != null && Model.Any())
+    {
+        totalItems = Model.Count;
+        totalAmount = Model.Sum(c => (c.Book?.SecondPrice ?? 0) * (c.Quantity ?? 0));
+    }
+}
+
+<link rel="stylesheet" href="~/css/cart.css" />
+@Html.AntiForgeryToken()
+
+<div class="container mt-4">
+    @if (Model == null || !Model.Any())
+    {
+        <!-- Empty Cart - Full Width Centered -->
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body text-center py-5">
+                        <div class="empty-cart-icon mb-4">
+                            <i class="fas fa-shopping-cart fa-5x text-muted"></i>
+                        </div>
+                        <h4 class="text-muted mb-3">Giỏ hàng trống</h4>
+                        <p class="text-muted mb-4">Hãy thêm sản phẩm vào giỏ hàng để tiếp tục mua sắm</p>
+                        <a href="@Url.Action("Index", "Home")" class="btn btn-danger btn-lg px-5">
+                            <i class="fas fa-shopping-bag me-2"></i>
+                            MUA SẮM NGAY
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <!-- Cart with Items -->
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header bg-light">
+                        <h5 class="mb-0">GIỎ HÀNG (<span id="totalItemsCount">@totalItems</span> sản phẩm)</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="selectAll" checked>
+                                <label class="form-check-label" for="selectAll">
+                                    Chọn tất cả (<span id="selectAllCount">@totalItems</span> sản phẩm)
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th></th>
+                                        <th>Sản phẩm</th>
+                                        <th>Số lượng</th>
+                                        <th>Thành tiền</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="cartTableBody">
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr id="row_@item.Id">
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input item-checkbox" type="checkbox" value="@item.Id" checked>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="@(item.Book?.ImageUrl ?? "/images/default-book.jpg")"
+                                                         alt="@(item.Book?.BookName ?? "Không có sách")"
+                                                         class="img-thumbnail me-3"
+                                                         style="width: 80px; height: 80px; object-fit: cover;">
+                                                    <div>
+                                                        <h6 class="mb-1">@(item.Book?.BookName ?? "Không có sách")</h6>
+                                                        <div class="text-muted small">
+                                                            <span class="text-decoration-line-through">@((item.Book?.FirstPrice ?? 0).ToString("N0")) đ</span>
+                                                        </div>
+                                                        <div class="text-danger fw-bold">
+                                                            <span class="unit-price" data-price="@(item.Book?.SecondPrice ?? 0)">@((item.Book?.SecondPrice ?? 0).ToString("N0")) đ</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="input-group" style="width: 120px;">
+                                                    <button class="btn btn-outline-secondary btn-sm" type="button" onclick="decreaseQuantity(@item.Id)">-</button>
+                                                    <input type="number" class="form-control form-control-sm text-center quantity-input"
+                                                           value="@item.Quantity" min="1" id="quantity_@item.Id" 
+                                                           onchange="updateQuantityManual(@item.Id, this.value)">
+                                                    <button class="btn btn-outline-secondary btn-sm" type="button" onclick="increaseQuantity(@item.Id)">+</button>
+                                                </div>
+                                            </td>
+                                            <td class="fw-bold text-danger">
+                                                <span id="subtotal_@item.Id" class="item-subtotal">@(((item.Book?.SecondPrice ?? 0) * (item.Quantity ?? 0)).ToString("N0")) đ</span>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-outline-danger btn-sm" onclick="removeItem(@item.Id)" title="Xóa sản phẩm">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <!-- Promotion Code -->
+                <div class="card mb-3">
+                    <div class="card-header bg-light">
+                        <h6 class="mb-0">
+                            <i class="fas fa-tag text-primary me-2"></i>
+                            KHUYẾN MÃI
+                        </h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label class="form-label">Mã Giảm 20K - Toàn Sàn</label>
+                            <p class="text-muted small mb-2">Đơn hàng từ 249k - Không bao gồm giá trị của các sản phẩm sau: Manga, Ngoại...</p>
+                            <div class="text-muted small">HSD: 31/05/2025</div>
+                            <div class="text-primary small">Mua thêm 77,400 đ</div>
+                            <button class="btn btn-primary btn-sm mt-2">Mua thêm</button>
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Nhập mã khuyến mãi" id="promoCode">
+                                <button class="btn btn-outline-primary" type="button" onclick="applyPromoCode()">
+                                    Áp dụng
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info small mb-0">
+                            <i class="fas fa-info-circle me-1"></i>
+                            4 khuyến mãi đủ điều kiện
+                            <a href="#" class="float-end text-decoration-none">Xem thêm <i class="fas fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gift Section -->
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h6 class="text-primary mb-2">
+                            <i class="fas fa-gift me-2"></i>
+                            Nhận quà
+                        </h6>
+                        <p class="text-muted small mb-2">Có thể áp dụng đồng thời nhiều...</p>
+                        <a href="#" class="text-primary text-decoration-none">
+                            Chọn quà <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Thành tiền</span>
+                            <span id="totalAmount">@totalAmount.ToString("N0") đ</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3 fw-bold">
+                            <span>Tổng Số Tiền (gồm VAT)</span>
+                            <span class="text-danger fs-5" id="finalTotal">@totalAmount.ToString("N0") đ</span>
+                        </div>
+                        <button class="btn btn-danger w-100 py-2 fw-bold" onclick="proceedToCheckout()">
+                            THANH TOÁN
+                        </button>
+                        <p class="text-muted small text-center mt-2 mb-0">
+                            (Giá này chưa bao gồm chi phí giao hàng)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<!-- Loading Modal -->
+<div class="modal fade" id="loadingModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center py-4">
+                <div class="spinner-border text-primary mb-3" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <p class="mb-0">Đang cập nhật...</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    window.cartConfig = {
+        updateUrl: '@Url.Action("UpdateCartQuantity", "Cart")',
+        removeUrl: '@Url.Action("RemoveFromCart", "Cart")',
+        applyPromoUrl: '@Url.Action("ApplyPromoCode", "Cart")',
+        checkoutUrl: '@Url.Action("Checkout", "Order")',
+        antiForgeryToken: '@Html.AntiForgeryToken().ToString().Replace("<input name=\"__RequestVerificationToken\" type=\"hidden\" value=\"", "").Replace("\" />", "")'
+    };
+</script>
+
+<script src="~/js/cart_handler.js"></script>

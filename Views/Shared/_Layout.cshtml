@@ -58,7 +58,7 @@
 
                     <ul class="navbar-nav align-items-center gap-3 pe-4 fw-bold">
                         <li class="nav-item">
-                            <a class="nav-link primary-color require-login" href="#"><i class="bi bi-cart3 fs-5"></i></a>
+                            <a class="nav-link primary-color require-login" asp-action="Index" asp-controller="Cart"><i class="bi bi-cart3 fs-5"></i></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link primary-color require-login" href="#"><i class="bi bi-person-circle fs-5"></i></a>
@@ -131,6 +131,7 @@
     @await RenderSectionAsync("Scripts", required: false)
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script src="~/js/requireLogin.js"></script>
+    <script src="~/js/add_to_cart.js"></script>
     <script>
         AOS.init();
     </script>
