@@ -1,5 +1,6 @@
 C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\bin\Debug\net8.0\appsettings.json
+C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\bin\Debug\net8.0\google_api_key.json
 C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\bin\Debug\net8.0\BookNest.staticwebassets.runtime.json
 C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\bin\Debug\net8.0\BookNest.exe
 C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\bin\Debug\net8.0\BookNest.deps.json
@@ -9,6 +10,7 @@ C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\b
 C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\bin\Debug\net8.0\Azure.Core.dll
 C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\bin\Debug\net8.0\Azure.Identity.dll
 C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\bin\Debug\net8.0\Humanizer.dll
+C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.Google.dll
 C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
@@ -266,5 +268,3 @@ C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\o
 C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\obj\Debug\net8.0\BookNest.pdb
 C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\obj\Debug\net8.0\BookNest.genruntimeconfig.cache
 C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\obj\Debug\net8.0\ref\BookNest.dll
-C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\bin\Debug\net8.0\google_api_key.json
-C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.Google.dll

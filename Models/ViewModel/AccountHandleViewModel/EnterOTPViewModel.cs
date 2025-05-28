@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BookNest.Models.ViewModel
+namespace BookNest.Models.ViewModel.AccountHandleViewModel
 {
     public class EnterOTPViewModel
     {

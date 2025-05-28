@@ -6,6 +6,8 @@ using BookNest.Helper;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
 using System.Text.Json;
+using BookNest.Models;
+using BookNest.Models.MappingDBModel;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,7 +37,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
-builder.Services.AddIdentity<IdentityUser<int>, IdentityRole<int>>(options =>
+builder.Services.AddIdentity<AspNetUser, AspNetRole>(options =>
 {
     // Cấu hình password
     options.Password.RequireDigit = false;

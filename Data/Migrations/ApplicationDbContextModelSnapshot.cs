@@ -22,64 +22,7 @@ namespace BookNest.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("BookNest.Models.Users", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("id");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)")
-                        .HasColumnName("email");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)")
-                        .HasColumnName("first_name");
-
-                    b.Property<int>("IdentityUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)")
-                        .HasColumnName("last_name");
-
-                    b.Property<string>("PasswordHash")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)")
-                        .HasColumnName("password_hashed");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)")
-                        .HasColumnName("phone");
-
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int")
-                        .HasColumnName("role_id");
-
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)")
-                        .HasColumnName("type");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<int>", b =>
+            modelBuilder.Entity("BookNest.Models.MappingDBModel.AspNetRole", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -109,31 +52,7 @@ namespace BookNest.Migrations
                     b.ToTable("AspNetRoles", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ClaimType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("AspNetRoleClaims", (string)null);
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser<int>", b =>
+            modelBuilder.Entity("BookNest.Models.MappingDBModel.AspNetUser", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -154,6 +73,14 @@ namespace BookNest.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -199,6 +126,456 @@ namespace BookNest.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("BookNest.Models.MappingDBModel.Book", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Author")
+                        .HasMaxLength(50)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(50)")
+                        .HasColumnName("author");
+
+                    b.Property<string>("BookName")
+                        .HasMaxLength(100)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("book_name");
+
+                    b.Property<int?>("CategoryId")
+                        .HasColumnType("int")
+                        .HasColumnName("category_id");
+
+                    b.Property<string>("Cover")
+                        .HasMaxLength(10)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(10)")
+                        .HasColumnName("cover");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text")
+                        .HasColumnName("description");
+
+                    b.Property<decimal?>("FirstPrice")
+                        .HasColumnType("decimal(12, 2)")
+                        .HasColumnName("first_price");
+
+                    b.Property<string>("ImageUrl")
+                        .HasMaxLength(255)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(255)")
+                        .HasColumnName("image_url");
+
+                    b.Property<decimal?>("ImportPrice")
+                        .HasColumnType("decimal(12, 2)")
+                        .HasColumnName("import_price");
+
+                    b.Property<string>("Isbn")
+                        .HasMaxLength(20)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(20)")
+                        .HasColumnName("isbn");
+
+                    b.Property<int?>("Pages")
+                        .HasColumnType("int")
+                        .HasColumnName("pages");
+
+                    b.Property<int?>("PublisherId")
+                        .HasColumnType("int")
+                        .HasColumnName("publisher_id");
+
+                    b.Property<int?>("Quantity")
+                        .HasColumnType("int")
+                        .HasColumnName("quantity");
+
+                    b.Property<decimal?>("Rating")
+                        .HasColumnType("decimal(3, 1)")
+                        .HasColumnName("rating");
+
+                    b.Property<decimal?>("SecondPrice")
+                        .HasColumnType("decimal(12, 2)")
+                        .HasColumnName("second_price");
+
+                    b.Property<int?>("YearPublished")
+                        .HasColumnType("int")
+                        .HasColumnName("year_published");
+
+                    b.HasKey("Id")
+                        .HasName("PK__Book__3213E83FA712B29A");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("PublisherId");
+
+                    b.ToTable("Book", (string)null);
+                });
+
+            modelBuilder.Entity("BookNest.Models.MappingDBModel.BookComment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("BookId")
+                        .HasColumnType("int")
+                        .HasColumnName("book_id");
+
+                    b.Property<string>("Content")
+                        .HasMaxLength(300)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(300)")
+                        .HasColumnName("content");
+
+                    b.Property<DateTime?>("CreateAt")
+                        .HasColumnType("datetime")
+                        .HasColumnName("create_at");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int")
+                        .HasColumnName("user_id");
+
+                    b.HasKey("Id")
+                        .HasName("PK__BookComm__3213E83F1510F6A6");
+
+                    b.HasIndex("BookId");
+
+                    b.ToTable("BookComment", (string)null);
+                });
+
+            modelBuilder.Entity("BookNest.Models.MappingDBModel.BookRating", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("BookId")
+                        .HasColumnType("int")
+                        .HasColumnName("book_id");
+
+                    b.Property<DateTime?>("CreateAt")
+                        .HasColumnType("datetime")
+                        .HasColumnName("create_at");
+
+                    b.Property<int?>("Rating")
+                        .HasColumnType("int")
+                        .HasColumnName("rating");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int")
+                        .HasColumnName("user_id");
+
+                    b.HasKey("Id")
+                        .HasName("PK__BookRati__3213E83F6C2BA165");
+
+                    b.HasIndex("BookId");
+
+                    b.ToTable("BookRating", (string)null);
+                });
+
+            modelBuilder.Entity("BookNest.Models.MappingDBModel.Cart", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("BookId")
+                        .HasColumnType("int")
+                        .HasColumnName("book_id");
+
+                    b.Property<int?>("Quantity")
+                        .HasColumnType("int")
+                        .HasColumnName("quantity");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int")
+                        .HasColumnName("user_id");
+
+                    b.HasKey("Id")
+                        .HasName("PK__Cart__3213E83F2414FCEA");
+
+                    b.HasIndex("BookId");
+
+                    b.ToTable("Cart", (string)null);
+                });
+
+            modelBuilder.Entity("BookNest.Models.MappingDBModel.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(50)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(50)")
+                        .HasColumnName("name");
+
+                    b.Property<int?>("ParentCategoryId")
+                        .HasColumnType("int")
+                        .HasColumnName("parent_category_id");
+
+                    b.HasKey("Id")
+                        .HasName("PK__Category__3213E83F965B5337");
+
+                    b.HasIndex("ParentCategoryId");
+
+                    b.ToTable("Category", (string)null);
+                });
+
+            modelBuilder.Entity("BookNest.Models.MappingDBModel.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .HasMaxLength(20)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(20)")
+                        .HasColumnName("address");
+
+                    b.Property<string>("Phone")
+                        .HasMaxLength(10)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(10)")
+                        .HasColumnName("phone");
+
+                    b.Property<string>("Status")
+                        .HasMaxLength(10)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(10)")
+                        .HasColumnName("status");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int")
+                        .HasColumnName("user_id");
+
+                    b.HasKey("Id")
+                        .HasName("PK__Order__3213E83F996681EF");
+
+                    b.ToTable("Order", (string)null);
+                });
+
+            modelBuilder.Entity("BookNest.Models.MappingDBModel.OrderDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("BookId")
+                        .HasColumnType("int")
+                        .HasColumnName("book_id");
+
+                    b.Property<int?>("OrderId")
+                        .HasColumnType("int")
+                        .HasColumnName("order_id");
+
+                    b.Property<int?>("Quantity")
+                        .HasColumnType("int")
+                        .HasColumnName("quantity");
+
+                    b.HasKey("Id")
+                        .HasName("PK__OrderDet__3213E83F521D1FAF");
+
+                    b.HasIndex("BookId");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("OrderDetail", (string)null);
+                });
+
+            modelBuilder.Entity("BookNest.Models.MappingDBModel.ParentCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Type")
+                        .HasMaxLength(10)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(10)")
+                        .HasColumnName("type");
+
+                    b.HasKey("Id")
+                        .HasName("PK__ParentCa__3213E83FE618C529");
+
+                    b.ToTable("ParentCategory", (string)null);
+                });
+
+            modelBuilder.Entity("BookNest.Models.MappingDBModel.Payment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("CreateAt")
+                        .HasColumnType("datetime")
+                        .HasColumnName("create_at");
+
+                    b.Property<int?>("OrderId")
+                        .HasColumnType("int")
+                        .HasColumnName("order_id");
+
+                    b.Property<int?>("PaymentTypeId")
+                        .HasColumnType("int")
+                        .HasColumnName("payment_type_id");
+
+                    b.Property<string>("Status")
+                        .HasMaxLength(10)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(10)")
+                        .HasColumnName("status");
+
+                    b.Property<int?>("TotalPrice")
+                        .HasColumnType("int")
+                        .HasColumnName("total_price");
+
+                    b.HasKey("Id")
+                        .HasName("PK__Payment__3213E83F2B6B1401");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("PaymentTypeId");
+
+                    b.ToTable("Payment", (string)null);
+                });
+
+            modelBuilder.Entity("BookNest.Models.MappingDBModel.PaymentType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Type")
+                        .HasMaxLength(20)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(20)")
+                        .HasColumnName("type");
+
+                    b.HasKey("Id")
+                        .HasName("PK__PaymentT__3213E83F12E4A6E6");
+
+                    b.ToTable("PaymentType", (string)null);
+                });
+
+            modelBuilder.Entity("BookNest.Models.MappingDBModel.Publisher", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(30)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(30)")
+                        .HasColumnName("name");
+
+                    b.HasKey("Id")
+                        .HasName("PK__Publishe__3213E83F1EA10F55");
+
+                    b.ToTable("Publisher", (string)null);
+                });
+
+            modelBuilder.Entity("BookNest.Models.MappingDBModel.Voucher", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("CreateAt")
+                        .HasColumnType("datetime")
+                        .HasColumnName("create_at");
+
+                    b.Property<DateTime?>("ExpiredAt")
+                        .HasColumnType("datetime")
+                        .HasColumnName("expired_at");
+
+                    b.Property<bool?>("Type")
+                        .HasColumnType("bit")
+                        .HasColumnName("type");
+
+                    b.Property<int?>("UsageLimit")
+                        .HasColumnType("int")
+                        .HasColumnName("usage_limit");
+
+                    b.Property<int?>("UsedCount")
+                        .HasColumnType("int")
+                        .HasColumnName("used_count");
+
+                    b.Property<string>("VoucherCode")
+                        .HasMaxLength(10)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(10)")
+                        .HasColumnName("voucher_code");
+
+                    b.HasKey("Id")
+                        .HasName("PK__Voucher__3213E83F4AFFE46F");
+
+                    b.ToTable("Voucher", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
@@ -280,9 +657,118 @@ namespace BookNest.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("OrderVoucher", b =>
+                {
+                    b.Property<int>("VoucherId")
+                        .HasColumnType("int")
+                        .HasColumnName("voucher_id");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int")
+                        .HasColumnName("order_id");
+
+                    b.HasKey("VoucherId", "OrderId")
+                        .HasName("PK__OrderVou__04D3698A28DD1E74");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("OrderVoucher", (string)null);
+                });
+
+            modelBuilder.Entity("BookNest.Models.MappingDBModel.Book", b =>
+                {
+                    b.HasOne("BookNest.Models.MappingDBModel.Category", "Category")
+                        .WithMany("Books")
+                        .HasForeignKey("CategoryId")
+                        .HasConstraintName("FK__Book__category_i__693CA210");
+
+                    b.HasOne("BookNest.Models.MappingDBModel.Publisher", "Publisher")
+                        .WithMany("Books")
+                        .HasForeignKey("PublisherId")
+                        .HasConstraintName("FK__Book__publisher___6B24EA82");
+
+                    b.Navigation("Category");
+
+                    b.Navigation("Publisher");
+                });
+
+            modelBuilder.Entity("BookNest.Models.MappingDBModel.BookComment", b =>
+                {
+                    b.HasOne("BookNest.Models.MappingDBModel.Book", "Book")
+                        .WithMany("BookComments")
+                        .HasForeignKey("BookId")
+                        .HasConstraintName("FK__BookComme__book___619B8048");
+
+                    b.Navigation("Book");
+                });
+
+            modelBuilder.Entity("BookNest.Models.MappingDBModel.BookRating", b =>
+                {
+                    b.HasOne("BookNest.Models.MappingDBModel.Book", "Book")
+                        .WithMany("BookRatings")
+                        .HasForeignKey("BookId")
+                        .HasConstraintName("FK__BookRatin__book___68487DD7");
+
+                    b.Navigation("Book");
+                });
+
+            modelBuilder.Entity("BookNest.Models.MappingDBModel.Cart", b =>
+                {
+                    b.HasOne("BookNest.Models.MappingDBModel.Book", "Book")
+                        .WithMany("Carts")
+                        .HasForeignKey("BookId")
+                        .HasConstraintName("FK__Cart__book_id__60A75C0F");
+
+                    b.Navigation("Book");
+                });
+
+            modelBuilder.Entity("BookNest.Models.MappingDBModel.Category", b =>
+                {
+                    b.HasOne("BookNest.Models.MappingDBModel.ParentCategory", "ParentCategory")
+                        .WithMany("Categories")
+                        .HasForeignKey("ParentCategoryId")
+                        .HasConstraintName("FK__Category__parent__6A30C649");
+
+                    b.Navigation("ParentCategory");
+                });
+
+            modelBuilder.Entity("BookNest.Models.MappingDBModel.OrderDetail", b =>
+                {
+                    b.HasOne("BookNest.Models.MappingDBModel.Book", "Book")
+                        .WithMany("OrderDetails")
+                        .HasForeignKey("BookId")
+                        .HasConstraintName("FK__OrderDeta__book___6754599E");
+
+                    b.HasOne("BookNest.Models.MappingDBModel.Order", "Order")
+                        .WithMany("OrderDetails")
+                        .HasForeignKey("OrderId")
+                        .HasConstraintName("FK__OrderDeta__order__66603565");
+
+                    b.Navigation("Book");
+
+                    b.Navigation("Order");
+                });
+
+            modelBuilder.Entity("BookNest.Models.MappingDBModel.Payment", b =>
+                {
+                    b.HasOne("BookNest.Models.MappingDBModel.Order", "Order")
+                        .WithMany("Payments")
+                        .HasForeignKey("OrderId")
+                        .HasConstraintName("FK__Payment__order_i__6383C8BA");
+
+                    b.HasOne("BookNest.Models.MappingDBModel.PaymentType", "PaymentType")
+                        .WithMany("Payments")
+                        .HasForeignKey("PaymentTypeId")
+                        .HasConstraintName("FK__Payment__payment__628FA481");
+
+                    b.Navigation("Order");
+
+                    b.Navigation("PaymentType");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<int>", null)
+                    b.HasOne("BookNest.Models.MappingDBModel.AspNetRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -291,7 +777,7 @@ namespace BookNest.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser<int>", null)
+                    b.HasOne("BookNest.Models.MappingDBModel.AspNetUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -300,7 +786,7 @@ namespace BookNest.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser<int>", null)
+                    b.HasOne("BookNest.Models.MappingDBModel.AspNetUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -309,13 +795,13 @@ namespace BookNest.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<int>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<int>", null)
+                    b.HasOne("BookNest.Models.MappingDBModel.AspNetRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser<int>", null)
+                    b.HasOne("BookNest.Models.MappingDBModel.AspNetUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -324,11 +810,64 @@ namespace BookNest.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser<int>", null)
+                    b.HasOne("BookNest.Models.MappingDBModel.AspNetUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("OrderVoucher", b =>
+                {
+                    b.HasOne("BookNest.Models.MappingDBModel.Order", null)
+                        .WithMany()
+                        .HasForeignKey("OrderId")
+                        .IsRequired()
+                        .HasConstraintName("FK__OrderVouc__order__6477ECF3");
+
+                    b.HasOne("BookNest.Models.MappingDBModel.Voucher", null)
+                        .WithMany()
+                        .HasForeignKey("VoucherId")
+                        .IsRequired()
+                        .HasConstraintName("FK__OrderVouc__vouch__656C112C");
+                });
+
+            modelBuilder.Entity("BookNest.Models.MappingDBModel.Book", b =>
+                {
+                    b.Navigation("BookComments");
+
+                    b.Navigation("BookRatings");
+
+                    b.Navigation("Carts");
+
+                    b.Navigation("OrderDetails");
+                });
+
+            modelBuilder.Entity("BookNest.Models.MappingDBModel.Category", b =>
+                {
+                    b.Navigation("Books");
+                });
+
+            modelBuilder.Entity("BookNest.Models.MappingDBModel.Order", b =>
+                {
+                    b.Navigation("OrderDetails");
+
+                    b.Navigation("Payments");
+                });
+
+            modelBuilder.Entity("BookNest.Models.MappingDBModel.ParentCategory", b =>
+                {
+                    b.Navigation("Categories");
+                });
+
+            modelBuilder.Entity("BookNest.Models.MappingDBModel.PaymentType", b =>
+                {
+                    b.Navigation("Payments");
+                });
+
+            modelBuilder.Entity("BookNest.Models.MappingDBModel.Publisher", b =>
+                {
+                    b.Navigation("Books");
                 });
 #pragma warning restore 612, 618
         }

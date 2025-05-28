@@ -1,6 +1,7 @@
 ﻿using BookNest.Data;
 using BookNest.Models;
-using BookNest.Models.ViewModel;
+using BookNest.Models.MappingDBModel;
+using BookNest.Models.ViewModel.AccountHandleViewModel;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -12,16 +13,16 @@ namespace BookNest.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly UserManager<IdentityUser<int>> _userManager;
-        private readonly SignInManager<IdentityUser<int>> _signInManager;
+        private readonly UserManager<AspNetUser> _userManager;
+        private readonly SignInManager<AspNetUser> _signInManager;
         private readonly IEmailSender _emailSender;
         private readonly ApplicationDbContext _context;
         private readonly IMemoryCache _cache;
 
         public AccountController(
             IMemoryCache cache,
-            UserManager<IdentityUser<int>> userManager,
-            SignInManager<IdentityUser<int>> signInManager,
+            UserManager<AspNetUser> userManager,
+            SignInManager<AspNetUser> signInManager,
             IEmailSender emailSender,
             ApplicationDbContext context)
         {
@@ -91,11 +92,13 @@ namespace BookNest.Controllers
         {
             if (ModelState.IsValid)
             {
-                var identityUser = new IdentityUser<int>
+                var identityUser = new AspNetUser
                 {
                     UserName = model.Email,
                     Email = model.Email,
-                    PhoneNumber = model.Phone
+                    PhoneNumber = model.Phone,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
                 };
 
                 try
@@ -115,33 +118,6 @@ namespace BookNest.Controllers
                             ViewBag.ErrorMessage = string.Join("<br/>", result.Errors.Select(e => e.Description));
 
                             return View(model);
-                        }
-
-                        // Bước 3: Tạo custom user với transaction riêng
-                        using var transaction = await _context.Database.BeginTransactionAsync();
-                        try
-                        {
-                            var user = new Users
-                            {
-                                FirstName = model.FirstName,
-                                LastName = model.LastName,
-                                Email = model.Email,
-                                PhoneNumber = model.Phone,
-                                RoleId = 1,
-                                IdentityUserId = identityUser.Id,
-                                PasswordHash = identityUser.PasswordHash
-                            };
-
-                            _context.Users.Add(user);
-                            await _context.SaveChangesAsync();
-                            await transaction.CommitAsync();
-                            Console.WriteLine("Custom user saved");
-                        }
-                        catch
-                        {
-                            await transaction.RollbackAsync();
-                            await _userManager.DeleteAsync(identityUser);
-                            throw;
                         }
 
                         // Bước 4: Gửi email
@@ -282,15 +258,6 @@ namespace BookNest.Controllers
 
                     Console.WriteLine(user.Id);
 
-                    var userr = _context.Users.FirstOrDefault(u => u.Id == user.Id);
-                    if (userr != null)
-                    {
-                        userr.PasswordHash = user.PasswordHash;
-                        _context.Users.Update(userr);
-
-                        await _context.SaveChangesAsync();
-                    }
-
                     Console.WriteLine("OK");
 
                     return RedirectToAction("Login");
@@ -351,21 +318,17 @@ namespace BookNest.Controllers
                         return RedirectToAction("Index", "Home");
                     }
 
-                    var identityUser = new IdentityUser<int> { UserName = email, Email = email, EmailConfirmed = true };
+                    var identityUser = new AspNetUser { 
+                        UserName = email, 
+                        Email = email, 
+                        EmailConfirmed = true, 
+                        FirstName =  info.Principal.FindFirstValue(ClaimTypes.GivenName),
+                        LastName =  info.Principal.FindFirstValue(ClaimTypes.Surname)
+                    };
                     var createResult = await _userManager.CreateAsync(identityUser);
                     if (createResult.Succeeded)
                     {
                         var roleResult = await _userManager.AddToRoleAsync(identityUser, "User");
-                        var user = new Users
-                        {
-                            FirstName = info.Principal.FindFirstValue(ClaimTypes.GivenName),
-                            LastName = info.Principal.FindFirstValue(ClaimTypes.Surname),
-                            Email = info.Principal.FindFirstValue(ClaimTypes.Email),
-                            IdentityUserId = identityUser.Id,
-                        };
-
-                        _context.Users.Add(user);
-                        await _context.SaveChangesAsync();
 
                         var addLoginResult = await _userManager.AddLoginAsync(identityUser, info);
                         if (addLoginResult.Succeeded)

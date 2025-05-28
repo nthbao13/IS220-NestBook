@@ -37,6 +37,14 @@
       "PackagePath": "staticwebassets\\images\\book.png"
     },
     {
+      "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\images\\congnghe.png",
+      "PackagePath": "staticwebassets\\images\\congnghe.png"
+    },
+    {
+      "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\images\\khoahoc.png",
+      "PackagePath": "staticwebassets\\images\\khoahoc.png"
+    },
+    {
       "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\images\\kinhte.png",
       "PackagePath": "staticwebassets\\images\\kinhte.png"
     },
@@ -87,6 +95,14 @@
     {
       "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\images\\vanhoc.png",
       "PackagePath": "staticwebassets\\images\\vanhoc.png"
+    },
+    {
+      "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\js\\home_handler.js",
+      "PackagePath": "staticwebassets\\js\\home_handler.js"
+    },
+    {
+      "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\js\\requireLogin.js",
+      "PackagePath": "staticwebassets\\js\\requireLogin.js"
     },
     {
       "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\js\\site.js",

@@ -3,10 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|c:\\users\\7713b\\onedrive\\documents\\onedrive\\computer\\uit\\hk6\\framework\\booknest\\wwwroot\\css\\product.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|solutionrelative:wwwroot\\css\\product.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|c:\\users\\7713b\\onedrive\\documents\\onedrive\\computer\\uit\\hk6\\framework\\booknest\\views\\books\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|solutionrelative:views\\books\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
@@ -23,27 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "product.css",
-              "DocumentMoniker": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\css\\product.css",
-              "RelativeDocumentMoniker": "wwwroot\\css\\product.css",
-              "ToolTip": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\css\\product.css",
-              "RelativeToolTip": "wwwroot\\css\\product.css",
-              "ViewState": "AgIAALgAAAAAAAAAAAAAALsAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-05-25T09:16:02.711Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\Views\\Books\\Details.cshtml",
               "RelativeDocumentMoniker": "Views\\Books\\Details.cshtml",
               "ToolTip": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\Views\\Books\\Details.cshtml",
               "RelativeToolTip": "Views\\Books\\Details.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAMUAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAMYAAAAAAAAAAAAAAN4AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-25T09:08:02.283Z",
+              "WhenOpened": "2025-05-28T15:53:56.988Z",
               "EditorCaption": ""
             }
           ]
