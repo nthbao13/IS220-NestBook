@@ -70,7 +70,7 @@
                                 <tbody id="cartTableBody">
                                     @foreach (var item in Model)
                                     {
-                                        <tr id="row_@item.Id">
+                                                <tr id="row_@item.Id" data-book-id="@item.BookId">
                                             <td>
                                                 <div class="form-check">
                                                     <input class="form-check-input item-checkbox" type="checkbox" value="@item.Id" checked>
@@ -120,53 +120,6 @@
             </div>
 
             <div class="col-md-4">
-                <!-- Promotion Code -->
-                <div class="card mb-3">
-                    <div class="card-header bg-light">
-                        <h6 class="mb-0">
-                            <i class="fas fa-tag text-primary me-2"></i>
-                            KHUYẾN MÃI
-                        </h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="mb-3">
-                            <label class="form-label">Mã Giảm 20K - Toàn Sàn</label>
-                            <p class="text-muted small mb-2">Đơn hàng từ 249k - Không bao gồm giá trị của các sản phẩm sau: Manga, Ngoại...</p>
-                            <div class="text-muted small">HSD: 31/05/2025</div>
-                            <div class="text-primary small">Mua thêm 77,400 đ</div>
-                            <button class="btn btn-primary btn-sm mt-2">Mua thêm</button>
-                        </div>
-
-                        <div class="mb-3">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Nhập mã khuyến mãi" id="promoCode">
-                                <button class="btn btn-outline-primary" type="button" onclick="applyPromoCode()">
-                                    Áp dụng
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="alert alert-info small mb-0">
-                            <i class="fas fa-info-circle me-1"></i>
-                            4 khuyến mãi đủ điều kiện
-                            <a href="#" class="float-end text-decoration-none">Xem thêm <i class="fas fa-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gift Section -->
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h6 class="text-primary mb-2">
-                            <i class="fas fa-gift me-2"></i>
-                            Nhận quà
-                        </h6>
-                        <p class="text-muted small mb-2">Có thể áp dụng đồng thời nhiều...</p>
-                        <a href="#" class="text-primary text-decoration-none">
-                            Chọn quà <i class="fas fa-chevron-right"></i>
-                        </a>
-                    </div>
-                </div>
 
                 <!-- Order Summary -->
                 <div class="card">
@@ -211,9 +164,9 @@
         updateUrl: '@Url.Action("UpdateCartQuantity", "Cart")',
         removeUrl: '@Url.Action("RemoveFromCart", "Cart")',
         applyPromoUrl: '@Url.Action("ApplyPromoCode", "Cart")',
-        checkoutUrl: '@Url.Action("Checkout", "Order")',
         antiForgeryToken: '@Html.AntiForgeryToken().ToString().Replace("<input name=\"__RequestVerificationToken\" type=\"hidden\" value=\"", "").Replace("\" />", "")'
     };
 </script>
 
 <script src="~/js/cart_handler.js"></script>
+<script src="~/js/order_handler.js"></script>

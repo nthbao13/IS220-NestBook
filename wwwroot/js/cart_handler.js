@@ -384,23 +384,6 @@ function showDiscountInfo(discountAmount) {
     }
 }
 
-// Proceed to checkout
-function proceedToCheckout() {
-    const checkedItems = document.querySelectorAll(".item-checkbox:checked");
-    if (checkedItems.length === 0) {
-        showToast("Vui lòng chọn ít nhất một sản phẩm để thanh toán", "warning");
-        return;
-    }
-
-    // Store selected items for checkout
-    const selectedItems = Array.from(checkedItems).map(checkbox => checkbox.value);
-    sessionStorage.setItem('selectedCartItems', JSON.stringify(selectedItems));
-
-    // Redirect to checkout page
-    const checkoutUrl = window.cartConfig?.checkoutUrl || '/Order/Checkout';
-    window.location.href = checkoutUrl;
-}
-
 // Select all functionality and event handlers
 function initializeCartEventHandlers() {
     const selectAllCheckbox = document.getElementById("selectAll");
@@ -481,7 +464,6 @@ if (typeof module !== 'undefined' && module.exports) {
         formatCurrency,
         updateCartItem,
         removeItem,
-        applyPromoCode,
-        proceedToCheckout
+        applyPromoCode
     };
 }

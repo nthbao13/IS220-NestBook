@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication.Google;
 using System.Text.Json;
 using BookNest.Models;
 using BookNest.Models.MappingDBModel;
+using BookNest.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -52,6 +53,8 @@ builder.Services.AddIdentity<AspNetUser, AspNetRole>(options =>
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IEmailSender, EmailSender>();
+
+builder.Services.AddScoped<IVnPayService, VnPayService>();
 
 builder.Services.AddMemoryCache();
 builder.Services.AddSession();

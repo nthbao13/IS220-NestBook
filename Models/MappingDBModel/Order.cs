@@ -8,12 +8,17 @@ public partial class Order
     public int Id { get; set; }
 
     public int? UserId { get; set; }
+    public string? Name { get; set; }
 
     public string? Address { get; set; }
 
     public string? Phone { get; set; }
 
     public string? Status { get; set; }
+    
+    public DateTime? CreateAt { get; set; }
+
+    public int? From { get; set; } // buy_now = 0; cart = 1
 
     public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
 

@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\css\\home.css"
     },
     {
+      "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\css\\order.css",
+      "PackagePath": "staticwebassets\\css\\order.css"
+    },
+    {
       "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\css\\product.css",
       "PackagePath": "staticwebassets\\css\\product.css"
     },
@@ -111,6 +115,14 @@
     {
       "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\js\\home_handler.js",
       "PackagePath": "staticwebassets\\js\\home_handler.js"
+    },
+    {
+      "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\js\\order_handler.js",
+      "PackagePath": "staticwebassets\\js\\order_handler.js"
+    },
+    {
+      "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\js\\payment_handler.js",
+      "PackagePath": "staticwebassets\\js\\payment_handler.js"
     },
     {
       "Id": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\js\\requireLogin.js",

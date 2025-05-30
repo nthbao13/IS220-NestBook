@@ -66,11 +66,11 @@ public partial class ApplicationDbContext : IdentityDbContext<AspNetUser,  AspNe
                 .HasColumnName("book_name");
             entity.Property(e => e.CategoryId).HasColumnName("category_id");
             entity.Property(e => e.Cover)
-                .HasMaxLength(10)
+                .HasMaxLength(15)
                 .IsUnicode(true)
                 .HasColumnName("cover");
             entity.Property(e => e.Description)
-                .HasColumnType("text")
+                .IsUnicode(true)
                 .HasColumnName("description");
             entity.Property(e => e.FirstPrice)
                 .HasColumnType("decimal(12, 2)")
@@ -188,8 +188,15 @@ public partial class ApplicationDbContext : IdentityDbContext<AspNetUser,  AspNe
             entity.ToTable("Order");
 
             entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.CreateAt)
+                .HasColumnType("datetime")
+                .HasColumnName("create_at");
+            entity.Property(e => e.Name)
+                .HasMaxLength(30)
+                .IsUnicode(true)
+                .HasColumnName("name");
             entity.Property(e => e.Address)
-                .HasMaxLength(20)
+                .HasMaxLength(50)
                 .IsUnicode(true)
                 .HasColumnName("address");
             entity.Property(e => e.Phone)
@@ -200,6 +207,8 @@ public partial class ApplicationDbContext : IdentityDbContext<AspNetUser,  AspNe
                 .HasMaxLength(10)
                 .IsUnicode(true)
                 .HasColumnName("status");
+            entity.Property(e => e.From).HasColumnName("from");
+
             entity.Property(e => e.UserId).HasColumnName("user_id");
         });
 
@@ -231,7 +240,7 @@ public partial class ApplicationDbContext : IdentityDbContext<AspNetUser,  AspNe
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Type)
-                .HasMaxLength(10)
+                .HasMaxLength(50)
                 .IsUnicode(true)
                 .HasColumnName("type");
         });
@@ -252,6 +261,18 @@ public partial class ApplicationDbContext : IdentityDbContext<AspNetUser,  AspNe
                 .HasMaxLength(10)
                 .IsUnicode(true)
                 .HasColumnName("status");
+            entity.Property(e => e.TransactionRef)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("TransactionRef");
+            entity.Property(e => e.VnpTransactionNo)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("VnpTransactionNo");
+            entity.Property(e => e.VnpResponseCode)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("VnpResponseCode");
             entity.Property(e => e.TotalPrice).HasColumnName("total_price");
 
             entity.HasOne(d => d.Order).WithMany(p => p.Payments)
@@ -284,7 +305,7 @@ public partial class ApplicationDbContext : IdentityDbContext<AspNetUser,  AspNe
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Name)
-                .HasMaxLength(30)
+                .HasMaxLength(50)
                 .IsUnicode(true)
                 .HasColumnName("name");
         });
@@ -306,9 +327,12 @@ public partial class ApplicationDbContext : IdentityDbContext<AspNetUser,  AspNe
             entity.Property(e => e.UsageLimit).HasColumnName("usage_limit");
             entity.Property(e => e.UsedCount).HasColumnName("used_count");
             entity.Property(e => e.VoucherCode)
-                .HasMaxLength(10)
-                .IsUnicode(true)
+                .HasMaxLength(30)
+                .IsUnicode(false)
                 .HasColumnName("voucher_code");
+            entity.Property(e => e.Value)
+                .HasColumnType("decimal(12, 2)")
+                .HasColumnName("value");
 
             entity.HasMany(d => d.Orders).WithMany(p => p.Vouchers)
                 .UsingEntity<Dictionary<string, object>>(

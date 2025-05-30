@@ -11,6 +11,8 @@ public partial class Voucher
 
     public bool? Type { get; set; }
 
+    public decimal? Value { get; set; }
+
     public DateTime? CreateAt { get; set; }
 
     public DateTime? ExpiredAt { get; set; }
