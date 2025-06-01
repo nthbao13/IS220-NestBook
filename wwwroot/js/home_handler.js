@@ -39,7 +39,7 @@
         params.set('page', page);
 
         // Navigate to new URL
-        window.location.href = '/Books?' + params.toString();
+        window.location.href = '/Customer/Books?' + params.toString();
     }
 
     // Event listeners for filters
@@ -81,7 +81,7 @@
                 params.set('page', currentUrl.searchParams.get('page'));
             }
 
-            window.location.href = '/Books?' + params.toString();
+            window.location.href = '/Customer/Books?' + params.toString();
         });
     });
 
@@ -119,7 +119,7 @@
         clearButton.textContent = 'Xóa tất cả bộ lọc';
         clearButton.className = 'btn btn-outline-secondary btn-sm mt-2';
         clearButton.addEventListener('click', function () {
-            window.location.href = '/Books';
+            window.location.href = '/Customer/Books';
         });
 
         const categoriesSection = document.querySelector('.categories-section');

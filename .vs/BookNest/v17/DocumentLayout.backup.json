@@ -3,20 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|c:\\users\\7713b\\onedrive\\documents\\onedrive\\computer\\uit\\hk6\\framework\\booknest\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|c:\\users\\7713b\\onedrive\\documents\\onedrive\\computer\\uit\\hk6\\framework\\booknest\\services\\vnpayservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|solutionrelative:services\\vnpayservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|c:\\users\\7713b\\onedrive\\documents\\onedrive\\computer\\uit\\hk6\\framework\\booknest\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|solutionrelative:controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|c:\\users\\7713b\\onedrive\\documents\\onedrive\\computer\\uit\\hk6\\framework\\booknest\\libraries\\vnpaylibrary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|solutionrelative:libraries\\vnpaylibrary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|c:\\users\\7713b\\onedrive\\documents\\onedrive\\computer\\uit\\hk6\\framework\\booknest\\areas\\customer\\views\\books\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BC89F43E-6E1A-4516-8224-13A2E1B660C4}|BookNest.csproj|solutionrelative:areas\\customer\\views\\books\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,53 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-30T03:06:04.814Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "VnPayService.cs",
-              "DocumentMoniker": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\Services\\VnPayService.cs",
-              "RelativeDocumentMoniker": "Services\\VnPayService.cs",
-              "ToolTip": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\Services\\VnPayService.cs",
-              "RelativeToolTip": "Services\\VnPayService.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAQwCgAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-30T03:00:19.074Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "VnPayLibrary.cs",
-              "DocumentMoniker": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\Libraries\\VnPayLibrary.cs",
-              "RelativeDocumentMoniker": "Libraries\\VnPayLibrary.cs",
-              "ToolTip": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\Libraries\\VnPayLibrary.cs",
-              "RelativeToolTip": "Libraries\\VnPayLibrary.cs",
-              "ViewState": "AgIAAJMAAAAAAAAAAAAAALsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-30T02:50:24.68Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "OrderController.cs",
-              "DocumentMoniker": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\Controllers\\OrderController.cs",
-              "RelativeDocumentMoniker": "Controllers\\OrderController.cs",
-              "ToolTip": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\Controllers\\OrderController.cs",
-              "RelativeToolTip": "Controllers\\OrderController.cs",
-              "ViewState": "AgIAAGgBAAAAAAAAAAAqwHUBAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-29T08:25:20.322Z",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\Areas\\Customer\\Views\\Books\\Index.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Customer\\Views\\Books\\Index.cshtml",
+              "ToolTip": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\Areas\\Customer\\Views\\Books\\Index.cshtml",
+              "RelativeToolTip": "Areas\\Customer\\Views\\Books\\Index.cshtml",
+              "ViewState": "AgIAAO4AAAAAAAAAAAAAwBQBAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-31T21:58:11.831Z",
               "EditorCaption": ""
             }
           ]

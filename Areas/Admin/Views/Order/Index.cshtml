@@ -1,0 +1,61 @@
+﻿@model IEnumerable<BookNest.Models.MappingDBModel.Order>
+
+@{
+    ViewBag.Title = "Quản lý đơn hàng";
+}
+
+<div class="container-fluid">
+    <h2 class="mb-4">Danh sách đơn hàng</h2>
+
+    <div class="stat-card">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Khách hàng</th>
+                        <th>Địa chỉ</th>
+                        <th>Số điện thoại</th>
+                        <th>Ngày tạo</th>
+                        <th>Nguồn</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order in Model)
+                    {
+                        if (order.Status == "PENDING")
+                        {
+                            <tr>
+                                <td>@order.Id</td>
+                                <td>@order.Name</td>
+                                <td>@order.Address</td>
+                                <td>@order.Phone</td>
+                                <td>@order.CreateAt?.ToString("dd/MM/yyyy HH:mm")</td>
+                                <td>@(order.From == 0 ? "Mua ngay" : "Giỏ hàng")</td>
+                                <td>
+                                    <div class="btn-group btn-group-sm">
+                                        <a href="@Url.Action("Details", "Order", new { id = order.Id })" class="btn btn-outline-primary">
+                                            <i class="fas fa-eye"></i> Chi tiết
+                                        </a>
+                                        <form method="post" action="@Url.Action("Deliver", "Order", new { id = order.Id })" style="display: inline;">
+                                            @*@Html.AntiForgeryToken() *@
+                                            <button type="submit" class="btn btn-primary"
+                                                    onclick="return confirm('Xác nhận chuyển trạng thái đơn hàng sang DELIVERED?')">
+                                                <i class="fas fa-truck"></i> Gửi hàng
+                                            </button>
+                                        </form>
+                                        <a href="@Url.Action("Delete", "Order", new { id = order.Id })" class="btn btn-danger"
+                                           onclick="return confirm('Bạn chắc chắn muốn xóa đơn hàng này?')">
+                                            <i class="fas fa-trash"></i> Xóa
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

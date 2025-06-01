@@ -105,6 +105,9 @@ namespace BookNest.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("ProfileImage")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -139,14 +142,14 @@ namespace BookNest.Migrations
 
                     b.Property<string>("Author")
                         .HasMaxLength(50)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(50)")
+                        .IsUnicode(true)
+                        .HasColumnType("nvarchar(50)")
                         .HasColumnName("author");
 
                     b.Property<string>("BookName")
                         .HasMaxLength(100)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(100)")
+                        .IsUnicode(true)
+                        .HasColumnType("nvarchar(100)")
                         .HasColumnName("book_name");
 
                     b.Property<int?>("CategoryId")
@@ -154,13 +157,14 @@ namespace BookNest.Migrations
                         .HasColumnName("category_id");
 
                     b.Property<string>("Cover")
-                        .HasMaxLength(10)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(10)")
+                        .HasMaxLength(15)
+                        .IsUnicode(true)
+                        .HasColumnType("nvarchar(15)")
                         .HasColumnName("cover");
 
                     b.Property<string>("Description")
-                        .HasColumnType("text")
+                        .IsUnicode(true)
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("description");
 
                     b.Property<decimal?>("FirstPrice")
@@ -169,8 +173,8 @@ namespace BookNest.Migrations
 
                     b.Property<string>("ImageUrl")
                         .HasMaxLength(255)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(255)")
+                        .IsUnicode(true)
+                        .HasColumnType("nvarchar(255)")
                         .HasColumnName("image_url");
 
                     b.Property<decimal?>("ImportPrice")
@@ -179,8 +183,8 @@ namespace BookNest.Migrations
 
                     b.Property<string>("Isbn")
                         .HasMaxLength(20)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(20)")
+                        .IsUnicode(true)
+                        .HasColumnType("nvarchar(20)")
                         .HasColumnName("isbn");
 
                     b.Property<int?>("Pages")
@@ -232,8 +236,8 @@ namespace BookNest.Migrations
 
                     b.Property<string>("Content")
                         .HasMaxLength(300)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(300)")
+                        .IsUnicode(true)
+                        .HasColumnType("nvarchar(300)")
                         .HasColumnName("content");
 
                     b.Property<DateTime?>("CreateAt")
@@ -325,8 +329,8 @@ namespace BookNest.Migrations
 
                     b.Property<string>("Name")
                         .HasMaxLength(50)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(50)")
+                        .IsUnicode(true)
+                        .HasColumnType("nvarchar(50)")
                         .HasColumnName("name");
 
                     b.Property<int?>("ParentCategoryId")
@@ -351,21 +355,35 @@ namespace BookNest.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Address")
-                        .HasMaxLength(20)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(20)")
+                        .HasMaxLength(50)
+                        .IsUnicode(true)
+                        .HasColumnType("nvarchar(50)")
                         .HasColumnName("address");
+
+                    b.Property<DateTime?>("CreateAt")
+                        .HasColumnType("datetime")
+                        .HasColumnName("create_at");
+
+                    b.Property<int?>("From")
+                        .HasColumnType("int")
+                        .HasColumnName("from");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(30)
+                        .IsUnicode(true)
+                        .HasColumnType("nvarchar(30)")
+                        .HasColumnName("name");
 
                     b.Property<string>("Phone")
                         .HasMaxLength(10)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(10)")
+                        .IsUnicode(true)
+                        .HasColumnType("nvarchar(10)")
                         .HasColumnName("phone");
 
                     b.Property<string>("Status")
                         .HasMaxLength(10)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(10)")
+                        .IsUnicode(true)
+                        .HasColumnType("nvarchar(10)")
                         .HasColumnName("status");
 
                     b.Property<int?>("UserId")
@@ -419,9 +437,9 @@ namespace BookNest.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Type")
-                        .HasMaxLength(10)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(10)")
+                        .HasMaxLength(50)
+                        .IsUnicode(true)
+                        .HasColumnType("nvarchar(50)")
                         .HasColumnName("type");
 
                     b.HasKey("Id")
@@ -453,13 +471,31 @@ namespace BookNest.Migrations
 
                     b.Property<string>("Status")
                         .HasMaxLength(10)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(10)")
+                        .IsUnicode(true)
+                        .HasColumnType("nvarchar(10)")
                         .HasColumnName("status");
 
                     b.Property<int?>("TotalPrice")
                         .HasColumnType("int")
                         .HasColumnName("total_price");
+
+                    b.Property<string>("TransactionRef")
+                        .HasMaxLength(255)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(255)")
+                        .HasColumnName("TransactionRef");
+
+                    b.Property<string>("VnpResponseCode")
+                        .HasMaxLength(255)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(255)")
+                        .HasColumnName("VnpResponseCode");
+
+                    b.Property<string>("VnpTransactionNo")
+                        .HasMaxLength(255)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(255)")
+                        .HasColumnName("VnpTransactionNo");
 
                     b.HasKey("Id")
                         .HasName("PK__Payment__3213E83F2B6B1401");
@@ -482,8 +518,8 @@ namespace BookNest.Migrations
 
                     b.Property<string>("Type")
                         .HasMaxLength(20)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(20)")
+                        .IsUnicode(true)
+                        .HasColumnType("nvarchar(20)")
                         .HasColumnName("type");
 
                     b.HasKey("Id")
@@ -502,9 +538,9 @@ namespace BookNest.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
-                        .HasMaxLength(30)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(30)")
+                        .HasMaxLength(50)
+                        .IsUnicode(true)
+                        .HasColumnType("nvarchar(50)")
                         .HasColumnName("name");
 
                     b.HasKey("Id")
@@ -542,10 +578,14 @@ namespace BookNest.Migrations
                         .HasColumnType("int")
                         .HasColumnName("used_count");
 
+                    b.Property<decimal?>("Value")
+                        .HasColumnType("decimal(12, 2)")
+                        .HasColumnName("value");
+
                     b.Property<string>("VoucherCode")
-                        .HasMaxLength(10)
+                        .HasMaxLength(30)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(10)")
+                        .HasColumnType("varchar(30)")
                         .HasColumnName("voucher_code");
 
                     b.HasKey("Id")

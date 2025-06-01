@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BookNest</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/BookNest.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"><!-- AOS CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Thêm vào <head> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+    @if (TempData["OrderMessage"] != null)
+    {
+        <div class="alert alert-warning">
+            @TempData["OrderMessage"]
+        </div>
+    }
+
+    <script>
+        window.appUser = {
+          isLoggedIn: @(User.Identity.IsAuthenticated.ToString().ToLower())
+        };
+    </script>
+
+    <header style="background-color: #D2B48C; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); z-index: 10px">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-0">
+            <div class="container-fluid">
+                <a class="navbar-brand ps-4 d-flex" asp-area="Customer" asp-controller="Home" asp-action="Index" >
+                    <img src="/images/logo-1.png" alt="Logo" class="align-content-center me-2" />
+                    <h3 class="primary-color d-inline-block text-center mb-0 align-content-center">BookNest</h3>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between ms-3">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link primary-color fw-bold" asp-area="Customer" asp-controller="Home" asp-action="Index">Trang chủ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link primary-color fw-bold" asp-area="Customer" asp-controller="Books" asp-action="Index">Khám phá</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link primary-color fw-bold" asp-area="Customer" asp-controller="Home" asp-action="About">Về chúng tôi</a>
+                        </li>
+                    </ul>
+
+                    <!-- Search Form -->
+                    <form asp-controller="Search" asp-action="Index" method="get" class="d-flex me-3">
+                        <div class="input-group" style="width: 300px;">
+                            <input type="text" name="keyword" class="form-control" placeholder="Tìm kiếm" style="border: 1px solid #ccc; border-radius: 4px 0 0 4px; font-size: 14px;">
+                            <button type="submit" class="btn" style="background-color: #8B7355; color: white; border: 1px solid #8B7355; border-radius: 0 4px 4px 0; padding: 6px 12px;">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </form>
+
+                    <ul class="navbar-nav align-items-center gap-3 pe-4 fw-bold">
+                        <li class="nav-item">
+                            <a class="nav-link primary-color require-login" asp-area="Customer" asp-action="Index" asp-controller="Cart"><i class="bi bi-cart3 fs-5"></i></a>
+                        </li>
+                        <li class="nav-item position-relative" id="userMenuContainer">
+                            <a class="nav-link primary-color" href="#" id="userIcon">
+                                <i class="bi bi-person-circle fs-5"></i>
+                            </a>
+                            <div class="user-dropdown bg-white border rounded shadow px-3 py-2" id="userDropdown" style="top: 120%; right: 0; min-width: 160px; z-index: 999;">
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <a class="dropdown-item text-dark" href="/Customer/Account/Orders">Tài khoản của tôi</a>
+                                    <a class="dropdown-item text-dark" href="/Customer/Account/Logout">Đăng xuất</a>
+                                }
+                                else
+                                {
+                                    <a class="dropdown-item text-dark" href="/Customer/Account/Login">Đăng nhập</a>
+                                    <a class="dropdown-item text-dark" href="/Customer/Account/Register">Đăng ký</a>
+                                }
+                            </div>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container-fluid px-0">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row d-flex align-items-center">
+                <div class="col-2  me-4">
+                    <a class="navbar-brand d-flex align-content-center mt-4" asp-area="" asp-controller="Home" asp-action="Index">
+                        <img src="/images/logo-2.png" alt="Logo" class="me-2" style="width: 30px;" />
+                        <h3 class="d-inline-block text-white mb-0">BookNest</h3>
+                    </a>
+                    <div class="social-icons mb-2 d-flex justify-content-around gap-0">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-whatsapp"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-2 m-4 ">
+                    <h5>Phổ biến</h5>
+                    <ul>
+                        <li><a href="#" class="text-white">Văn học</a></li>
+                        <li><a href="#" class="text-white">Kỹ năng sống</a></li>
+                        <li><a href="#" class="text-white">Kinh tế</a></li>
+                        <li><a href="#" class="text-white">Thiếu nhi</a></li>
+                        <li><a href="#" class="text-white">Sách mới phát hành</a></li>
+                    </ul>
+                </div>
+                <div class="col-2 m-4 ">
+                    <h5>Thông tin</h5>
+                    <ul>
+                        <li><a href="#" class="text-white">Giao hàng</a></li>
+                        <li><a href="#" class="text-white">Thanh toán</a></li>
+                        <li><a href="#" class="text-white">Chính sách đổi trả</a></li>
+                        <li><a href="#" class="text-white">Chính sách bảo mật</a></li>
+                        <li><a href="#" class="text-white">Về BookNest</a></li>
+                    </ul>
+                </div>
+                <div class="col-1"></div>
+                <div class="col-3 pe-4">
+                    <h5>Hỗ trợ</h5>
+                    <ul>
+                        <li><a href="#" class="text-white">Liên hệ</a></li>
+                        <li><a href="#" class="text-white">Trả lại hàng</a></li>
+                        <li><a href="#" class="text-white">Hỗ trợ khách hàng</a></li>
+                    </ul>
+                    <div class="contact-info mt-3">
+                        <a href="tel:+380713391626" class="text-white">+38 (071) 339-16-26</a><br>
+                        <a href="mailto:support@booknest.com" class="text-white">support@booknest.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="~/js/requireLogin.js"></script>
+    <script src="~/js/add_to_cart.js"></script>
+    <script>
+        AOS.init();
+
+        $(document).ready(function () {
+            $(document).click(function (e) {
+                if (!$(e.target).closest('#userMenuContainer').length) {
+                    $('#userDropdown').addClass('d-none');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

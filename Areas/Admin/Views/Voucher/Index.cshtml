@@ -1,0 +1,166 @@
+﻿@model List<BookNest.Models.MappingDBModel.Voucher>
+@using BookNest.Models.MappingDBModel;
+
+@{
+    ViewBag.Title = "Quản lý voucher";
+    int pageNumber = ViewBag.PageNumber ?? 1;
+    int pageSize = ViewBag.PageSize ?? 10;
+    int totalItems = ViewBag.TotalItems ?? 0;
+    int totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
+}
+
+<div class="container-fluid">
+    <h2 class="mb-4">Danh sách voucher</h2>
+
+    <!-- Search and Filter -->
+    <div class="stat-card mb-4">
+        <form method="get" asp-action="Index" class="row g-3">
+            <div class="col-md-4">
+                <input type="text" name="searchString" class="form-control" placeholder="Tìm kiếm theo mã voucher..." value="@ViewBag.SearchString" />
+            </div>
+            <div class="col-md-3">
+                <select name="status" class="form-control">
+                    <option value="">Tất cả trạng thái</option>
+                    @if (ViewBag.Status == "valid")
+                    {
+                        <option value="valid" selected>Còn hiệu lực</option>
+                    }
+                    else
+                    {
+                        <option value="valid">Còn hiệu lực</option>
+                    }
+                    @if (ViewBag.Status == "expired")
+                    {
+                        <option value="expired" selected>Hết hạn</option>
+                    }
+                    else
+                    {
+                        <option value="expired">Hết hạn</option>
+                    }
+                    @if (ViewBag.Status == "usedUp")
+                    {
+                        <option value="usedUp" selected>Đã sử dụng hết</option>
+                    }
+                    else
+                    {
+                        <option value="usedUp">Đã sử dụng hết</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select name="type" class="form-control">
+                    <option value="">Tất cả loại</option>
+                    @if (ViewBag.Type == "false")
+                    {
+                        <option value="false" selected>Giảm giá cố định</option>
+                    }
+                    else
+                    {
+                        <option value="false">Giảm giá cố định</option>
+                    }
+                    @if (ViewBag.Type == "true")
+                    {
+                        <option value="true" selected>Giảm giá phần trăm</option>
+                    }
+                    else
+                    {
+                        <option value="true">Giảm giá phần trăm</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary w-100"><i class="fas fa-search"></i> Lọc</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Add New Voucher Button -->
+    <div class="mb-3">
+        <a href="@Url.Action("Create", "Voucher")" class="btn btn-primary"><i class="fas fa-plus"></i> Thêm voucher mới</a>
+    </div>
+
+    <!-- Voucher List -->
+    <div class="stat-card">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Mã voucher</th>
+                        <th>Loại</th>
+                        <th>Giá trị</th>
+                        <th>Ngày tạo</th>
+                        <th>Hết hạn</th>
+                        <th>Số lần sử dụng</th>
+                        <th>Trạng thái</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var voucher in Model)
+                    {
+                        <tr>
+                            <td>@voucher.Id</td>
+                            <td>@voucher.VoucherCode</td>
+                            <td>@(voucher.Type == false ? "Cố định" : "Phần trăm")</td>
+                            <td>@(voucher.Type == false ? voucher.Value?.ToString("N0") + " VNĐ" : voucher.Value?.ToString("P0"))</td>
+                            <td>@voucher.CreateAt?.ToString("dd/MM/yyyy")</td>
+                            <td>@voucher.ExpiredAt?.ToString("dd/MM/yyyy")</td>
+                            <td>@voucher.UsedCount / @voucher.UsageLimit</td>
+                            <td>
+                                @{
+                                    string statusClass = (voucher.ExpiredAt < DateTime.Now) ? "text-danger" :
+                                    (voucher.UsedCount >= voucher.UsageLimit) ? "text-warning" :
+                                    "text-success";
+                                    string statusText = (voucher.ExpiredAt < DateTime.Now) ? "Hết hạn" :
+                                    (voucher.UsedCount >= voucher.UsageLimit) ? "Đã sử dụng hết" :
+                                    "Còn hiệu lực";
+                                }
+                                <span class="@statusClass">@statusText</span>
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Details", "Voucher", new { id = voucher.Id })" class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-eye"></i> Chi tiết
+                                </a>
+                                <form asp-action="Delete" asp-route-id="@voucher.Id" method="post" style="display:inline;" onsubmit="return confirm('Bạn có chắc muốn xóa voucher này?');">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" class="btn btn-outline-danger btn-sm">
+                                        <i class="fas fa-trash"></i> Xóa
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="d-flex justify-content-center mt-4">
+            <ul class="pagination">
+                @if (pageNumber > 1)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index", new { page = pageNumber - 1, searchString = ViewBag.SearchString, status = ViewBag.Status, type = ViewBag.Type })">Trước</a>
+                    </li>
+                }
+                @for (int i = 1; i <= totalPages; i++)
+                {
+                    <li class="page-item @(i == pageNumber ? "active" : "")">
+                        <a class="page-link" href="@Url.Action("Index", new { page = i, searchString = ViewBag.SearchString, status = ViewBag.Status, type = ViewBag.Type })">@i</a>
+                    </li>
+                }
+                @if (pageNumber < totalPages)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index", new { page = pageNumber + 1, searchString = ViewBag.SearchString, status = ViewBag.Status, type = ViewBag.Type })">Sau</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <link href="/css/PagedList.css" rel="stylesheet" type="text/css" />
+}

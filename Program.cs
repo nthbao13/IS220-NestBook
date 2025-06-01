@@ -9,6 +9,8 @@ using System.Text.Json;
 using BookNest.Models;
 using BookNest.Models.MappingDBModel;
 using BookNest.Services;
+using CloudinaryDotNet;
+using dotenv.net;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,7 +26,11 @@ builder.Services.AddAuthentication(options =>
     options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
 })
-.AddCookie()
+.AddCookie(options =>
+{
+    options.LoginPath = "/Customer/Account/Login";
+    options.AccessDeniedPath = "/Customer/Account/AccessDenied";
+})
 .AddGoogle(googleOptions =>
 {
     googleOptions.ClientId = googleKeys.ClientId;
@@ -56,6 +62,12 @@ builder.Services.AddTransient<IEmailSender, EmailSender>();
 
 builder.Services.AddScoped<IVnPayService, VnPayService>();
 
+DotEnv.Load(options: new DotEnvOptions(probeForEnv: true));
+Cloudinary cloudinary = new Cloudinary(Environment.GetEnvironmentVariable("CLOUDINARY_URL"));
+cloudinary.Api.Secure = true;
+
+builder.Services.AddSingleton(cloudinary);
+
 builder.Services.AddMemoryCache();
 builder.Services.AddSession();
 
@@ -77,6 +89,18 @@ app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();
 
+// Route mặc định redirect đến Customer area
+app.MapControllerRoute(
+    name: "default_to_customer",
+    pattern: "",
+    defaults: new { area = "Customer", controller = "Home", action = "Index" });
+
+// Route cho areas
+app.MapControllerRoute(
+    name: "areas",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+// Route thông thường (không có area)
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

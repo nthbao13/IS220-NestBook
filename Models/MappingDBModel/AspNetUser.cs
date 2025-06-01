@@ -9,4 +9,6 @@ public partial class AspNetUser : IdentityUser<int>
     public string FirstName { get; set; } = string.Empty; 
 
     public string LastName { get; set; } = string.Empty;  
+
+    public string? ProfileImage {  get; set; } = string.Empty;
 }

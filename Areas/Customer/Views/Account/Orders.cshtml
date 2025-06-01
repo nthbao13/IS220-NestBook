@@ -1,0 +1,210 @@
+﻿@model List<BookNest.Models.MappingDBModel.Order>
+@{
+    ViewData["Title"] = "Quản lý đơn hàng";
+}
+
+<link rel="stylesheet" href="~/css/profile.css" />
+
+<div class="container-custom">
+    <div class="sidebar">
+        <h3 class="text-center fw-bold">@ViewBag.UserFullName</h3>
+        <ul class="list-unstyled">
+            <li><a href="#" class="active" data-section="orders">📦 Quản lý đơn hàng</a></li>
+            <li><a href="#" data-section="reviews">⭐ Đánh giá sản phẩm</a></li>
+            <li><a href="#" data-section="account">👤 Thông tin tài khoản</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <!-- Orders Section -->
+        <div id="orders-section">
+            <div class="tabs">
+                <div class="tab active" data-tab="pending">Chưa giao</div>
+                <div class="tab" data-tab="confirmed">Đang giao</div>
+                <div class="tab" data-tab="completed">Đã giao</div>
+            </div>
+
+            <div class="tab-content">
+                <!-- Tab Chưa giao (PENDING) -->
+                <div class="tab-pane active" id="pending">
+                    @{
+                        var pendingOrders = Model.Where(o => o.Status == "PENDING").ToList();
+                    }
+                    @if (pendingOrders.Any())
+                    {
+                        @foreach (var order in pendingOrders)
+                        {
+                            <div class="order-item">
+                                <div class="order-header">
+                                    <div class="order-info">
+                                        <span class="order-id">Đơn hàng #@order.Id</span>
+                                        <span class="order-status status-pending">Chưa giao</span>
+                                    </div>
+                                    <div style="font-size: 14px; color: #666; margin-top: 5px;">
+                                        Ngày đặt: @order.CreateAt?.ToString("dd/MM/yyyy HH:mm")
+                                    </div>
+                                </div>
+                                <div class="order-body">
+                                    @foreach (var detail in order.OrderDetails)
+                                    {
+                                        <a asp-controller="Books" asp-action="Details" class="text-decoration-none" asp-route-id="@detail.BookId">
+                                            <div class="book-item">
+                                                <img src="@(detail.Book?.ImageUrl ?? "/images/default-book.jpg")" alt="@detail.Book?.BookName" class="book-image">
+                                                <div class="book-info">
+                                                    <div class="book-title">@detail.Book?.BookName</div>
+                                                    <div class="book-author">Tác giả: @detail.Book?.Author</div>
+                                                    <div class="book-price">@((detail.Book?.SecondPrice ?? 0).ToString("N0")) đ x @detail.Quantity</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    }
+                                    <div class="total-price">
+                                        Tổng tiền: @(order.OrderDetails.Sum(od => (od.Book?.SecondPrice ?? 0) * (od.Quantity ?? 1)).ToString("N0")) đ
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="empty-state">
+                            <h3>Không có đơn hàng nào</h3>
+                            <p>Bạn chưa có đơn hàng nào đang chờ xử lý</p>
+                        </div>
+                    }
+                </div>
+
+                <!-- Tab Đang giao (DELIVERED) -->
+                <div class="tab-pane" id="confirmed">
+                    @{
+                        var confirmedOrders = Model.Where(o => o.Status == "DELIVERED").ToList();
+                    }
+                    @if (confirmedOrders.Any())
+                    {
+                        @foreach (var order in confirmedOrders)
+                        {
+                            <div class="order-item">
+                                <div class="order-header">
+                                    <div class="order-info">
+                                        <span class="order-id">Đơn hàng #@order.Id</span>
+                                        <span class="order-status status-confirmed">Đang giao</span>
+                                    </div>
+                                    <div style="font-size: 14px; color: #666; margin-top: 5px;">
+                                        Ngày đặt: @order.CreateAt?.ToString("dd/MM/yyyy HH:mm")
+                                    </div>
+                                </div>
+                                <div class="order-body">
+                                    @foreach (var detail in order.OrderDetails)
+                                    {
+                                        <a asp-controller="Books" asp-action="Details" class="text-decoration-none" asp-route-id="@detail.BookId">
+                                            <div class="book-item">
+                                                <img src="@(detail.Book?.ImageUrl ?? "/images/default-book.jpg")" alt="@detail.Book?.BookName" class="book-image">
+                                                <div class="book-info">
+                                                    <div class="book-title">@detail.Book?.BookName</div>
+                                                    <div class="book-author">Tác giả: @detail.Book?.Author</div>
+                                                    <div class="book-price">@((detail.Book?.SecondPrice ?? 0).ToString("N0")) đ x @detail.Quantity</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    }
+                                    <div class="total-price">
+                                        Tổng tiền: @(order.OrderDetails.Sum(od => (od.Book?.SecondPrice ?? 0) * (od.Quantity ?? 1)).ToString("N0")) đ
+                                    </div>
+                                    <div class="order-actions">
+                                        <button class="btn btn-success" onclick="confirmReceived(@order.Id)">Đã nhận hàng</button>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="empty-state">
+                            <h3>Không có đơn hàng nào</h3>
+                            <p>Bạn chưa có đơn hàng nào đang được giao</p>
+                        </div>
+                    }
+                </div>
+
+                <!-- Tab Đã giao (COMPLETED) -->
+                <div class="tab-pane" id="completed">
+                    @{
+                        var completedOrders = Model.Where(o => o.Status == "COMPLETED").ToList();
+                    }
+                    @if (completedOrders.Any())
+                    {
+                        @foreach (var order in completedOrders)
+                        {
+                            <div class="order-item">
+                                <div class="order-header">
+                                    <div class="order-info">
+                                        <span class="order-id">Đơn hàng #@order.Id</span>
+                                        <span class="order-status status-completed">Đã giao</span>
+                                    </div>
+                                    <div style="font-size: 14px; color: #666; margin-top: 5px;">
+                                        Ngày đặt: @order.CreateAt?.ToString("dd/MM/yyyy HH:mm")
+                                    </div>
+                                </div>
+                                <div class="order-body">
+                                    @foreach (var detail in order.OrderDetails)
+                                    {
+                                        <a asp-controller="Books" asp-action="Details" class="text-decoration-none" asp-route-id="@detail.BookId">
+                                            <div class="book-item">
+                                                <img src="@(detail.Book?.ImageUrl ?? "/images/default-book.jpg")" alt="@detail.Book?.BookName" class="book-image">
+                                                <div class="book-info">
+                                                    <div class="book-title">@detail.Book?.BookName</div>
+                                                    <div class="book-author">Tác giả: @detail.Book?.Author</div>
+                                                    <div class="book-price">@((detail.Book?.SecondPrice ?? 0).ToString("N0")) đ x @detail.Quantity</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    }
+                                    <div class="total-price">
+                                        Tổng tiền: @(order.OrderDetails.Sum(od => (od.Book?.SecondPrice ?? 0) * (od.Quantity ?? 1)).ToString("N0")) đ
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="empty-state">
+                            <h3>Không có đơn hàng nào</h3>
+                            <p>Bạn chưa có đơn hàng nào đã hoàn thành</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Reviews Section -->
+        <div id="reviews-section" style="display: none;">
+            <div style="background-color: #D2B48C; padding: 20px; color: white;">
+                <h2 style="margin: 0; text-align: center;">⭐ Đánh giá sản phẩm</h2>
+            </div>
+
+            <div class="tab-content">
+                <div id="reviews-content">
+                    <!-- Content will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Account Information Section -->
+        <div id="account-section" style="display: none;">
+            <div style="background-color: #D2B48C; padding: 20px; color: white;">
+                <h2 style="margin: 0; text-align: center;">👤 Thông tin tài khoản</h2>
+            </div>
+
+            <div class="tab-content">
+                <div id="account-content">
+                    <!-- Content will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/profile.js"></script>
+
+@Html.AntiForgeryToken()

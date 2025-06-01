@@ -23,7 +23,7 @@ function applyVoucher() {
     // Get CSRF token
     const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
 
-    fetch('/Order/CheckVoucher', {
+    fetch('/Customer/Order/CheckVoucher', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -233,7 +233,7 @@ function submitOrder() {
     const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
 
     // Submit order
-    fetch('/Order/ProcessPayment', {
+    fetch('/Customer/Order/ProcessPayment', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -258,7 +258,7 @@ function submitOrder() {
                 } else {
                     // COD payment - show success message and redirect
                     alert('Đặt hàng thành công! Cảm ơn bạn đã mua hàng.');
-                    window.location.href = '/Order/Success/' + orderId;
+                    window.location.href = '/Customer/Order/Success/' + orderId;
                 }
             } else {
                 throw new Error(data.message || 'Có lỗi xảy ra khi đặt hàng');

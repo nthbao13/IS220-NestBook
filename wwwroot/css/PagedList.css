@@ -1,0 +1,41 @@
+﻿.PagedList-pager {
+    margin-top: 20px;
+}
+
+    .PagedList-pager ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .PagedList-pager li {
+        display: inline-block;
+    }
+
+    .PagedList-pager a {
+        padding: 8px 12px;
+        border: 1px solid var(--light-brown);
+        border-radius: 5px;
+        color: var(--primary-brown);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+        .PagedList-pager a:hover {
+            background: var(--primary-brown);
+            color: white;
+        }
+
+    .PagedList-pager .disabled a {
+        color: #ccc;
+        border-color: #ccc;
+        cursor: not-allowed;
+    }
+
+    .PagedList-pager .selected a {
+        background: var(--primary-brown);
+        color: white;
+        border-color: var(--primary-brown);
+    }

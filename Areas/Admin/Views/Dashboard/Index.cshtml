@@ -1,0 +1,201 @@
+﻿@using BookNest.Areas.Admin.Models
+@* Views/Dashboard/Index.cshtml *@
+@model DashboardViewModel
+@{
+    ViewBag.Title = "Trang chủ";
+    var currentDate = DateTime.Now;
+    var dayOfWeek = currentDate.ToString("dddd", new System.Globalization.CultureInfo("vi-VN"));
+    var formattedDate = $"ngày {currentDate.Day} tháng {currentDate.Month} năm {currentDate.Year}";
+    var fullDateString = $"{dayOfWeek}, {formattedDate}";
+}
+
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center">
+            <p class="text-muted mb-0">@fullDateString</p>
+        </div>
+    </div>
+</div>
+
+<!-- Statistics Cards -->
+<div class="row g-4 mb-5">
+    <div class="col-lg-4 col-md-6">
+        <div class="stat-card h-100">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <div class="stat-number">@Model.TotalRevenue.ToString("N0") đ</div>
+                    <div class="stat-label">Tổng doanh thu</div>
+                </div>
+                <div class="text-primary">
+                    <i class="fas fa-money-bill-wave fa-2x"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6">
+        <div class="stat-card h-100">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <div class="stat-number">@Model.TotalOrders</div>
+                    <div class="stat-label">Tổng đơn đặt hàng</div>
+                </div>
+                <div class="text-primary">
+                    <i class="fas fa-shopping-cart fa-2x"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6">
+        <div class="stat-card h-100">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <div class="stat-number">@Model.NewCustomers</div>
+                    <div class="stat-label">Tổng khách hàng mới</div>
+                </div>
+                <div class="text-primary">
+                    <i class="fas fa-user-plus fa-2x"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Charts and Recent Activity -->
+<div class="row g-4">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header bg-light">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-chart-line me-2"></i>Biểu đồ doanh thu
+                </h5>
+            </div>
+            <div class="card-body">
+                <canvas id="revenueChart" width="400" height="360"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header bg-light">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-clock me-2"></i>Đơn hàng gần đây
+                </h5>
+            </div>
+            <div class="card-body">
+                @if (Model.RecentOrders != null && Model.RecentOrders.Any())
+                {
+                    <div class="list-group list-group-flush">
+                        @foreach (var order in Model.RecentOrders.Take(3))
+                        {
+                            <div class="list-group-item border-0 px-0">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-1">Đơn #@order.OrderId</h6>
+                                        <p class="mb-1 small text-muted">@order.CustomerName</p>
+                                        <small class="text-muted">@order.OrderDate.ToString("dd/MM/yyyy HH:mm")</small>
+                                    </div>
+                                    <div class="text-end">
+                                        <span class="badge bg-success">@order.Amount.ToString("N0")đ</span>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <div class="text-center text-muted py-4">
+                        <i class="fas fa-inbox fa-2x mb-3"></i>
+                        <p>Chưa có đơn hàng nào</p>
+                    </div>
+                }
+
+                <div class="text-center mt-3">
+                    <a href="@Url.Action("Index", "Order")" class="btn btn-outline-primary btn-sm">
+                        Xem tất cả đơn hàng
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Top Products -->
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-light">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-star me-2"></i>Sản phẩm bán chạy
+                </h5>
+            </div>
+            <div class="card-body">
+                @if (Model.TopProducts != null && Model.TopProducts.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Tác giả</th>
+                                    <th>Số lượng bán</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var product in Model.TopProducts.Take(5))
+                                {
+                                    <tr>
+                                        <td>@product.ProductName</td>
+                                        <td><span class="badge bg-info">@product.Author</span></td>
+                                        <td class="text-success fw-bold">@product.SoldQuantity</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <div class="text-center text-muted py-4">
+                        <i class="fas fa-box-open fa-2x mb-3"></i>
+                        <p>Chưa có dữ liệu sản phẩm</p>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('revenueChart').getContext('2d');
+    const revenueChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: @Html.Raw(Json.Serialize(ViewBag.ChartLabels)),
+            datasets: [{
+                label: 'Doanh thu trong tuần này',
+                data: @Html.Raw(Json.Serialize(ViewBag.ChartData)),
+                backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        callback: function (value) {
+                            return value.toLocaleString('vi-VN') + ' đ';
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>

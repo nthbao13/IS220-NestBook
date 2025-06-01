@@ -19,12 +19,10 @@
             }))
         };
 
-        // Lấy anti-forgery token
         const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value ||
             window.cartConfig?.antiForgeryToken;
 
-        // Gửi request tạo đơn hàng
-        const response = await fetch('/Order/Create', {
+        const response = await fetch('/Customer/Order/Create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -35,21 +33,17 @@
 
         const result = await response.json();
 
-        // Ẩn loading
         if (options.showLoading && typeof hideLoadingModal === 'function') {
             hideLoadingModal();
         }
 
         if (result.success) {
-            // Thành công - chuyển hướng đến trang thanh toán
             if (options.successCallback) {
                 options.successCallback(result);
             }
 
-            // Chuyển hướng đến trang payment
-            window.location.href = '/Order/Payment';
+            window.location.href = '/Customer/Order/Payment';
         } else {
-            // Xử lý lỗi
             const errorMessage = result.message || 'Có lỗi xảy ra khi tạo đơn hàng';
 
             if (options.errorCallback) {
@@ -60,7 +54,6 @@
         }
 
     } catch (error) {
-        // Ẩn loading khi có lỗi
         if (options.showLoading && typeof hideLoadingModal === 'function') {
             hideLoadingModal();
         }
@@ -76,7 +69,7 @@
     }
 }
 
-// Hàm dành riêng cho trang chi tiết sách (books/details)
+    
 function buyNowFromDetails() {
     const bookId = document.querySelector('.add-to-cart')?.getAttribute('data-product-id');
     const quantity = parseInt(document.getElementById('quantity')?.value || 1);

@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+	  <PackageReference Include="CloudinaryDotNet" Version="1.27.5" />
+	  <PackageReference Include="dotenv.net" Version="3.2.1" />
 	  <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="8.0.8" />
 	  <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.11" />
 	  <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.11" />
@@ -22,10 +24,15 @@
 	  </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="PagedList.Mvc" Version="4.5.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Identity\" />
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Customer\Data\" />
+    <Folder Include="Areas\Customer\Models\" />
+    <Folder Include="Areas\NewFolder\" />
+    <Folder Include="Views\" />
   </ItemGroup>
 
 </Project>

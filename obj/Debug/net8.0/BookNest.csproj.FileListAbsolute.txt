@@ -259,7 +259,7 @@ C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\o
 C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.BookNest.props
 C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.BookNest.props
 C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\obj\Debug\net8.0\scopedcss\Areas\Customer\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\obj\Debug\net8.0\scopedcss\bundle\BookNest.styles.css
 C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\obj\Debug\net8.0\scopedcss\projectbundle\BookNest.bundle.scp.css
 C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\obj\Debug\net8.0\BookNest.csproj.Up2Date
@@ -268,3 +268,8 @@ C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\o
 C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\obj\Debug\net8.0\BookNest.pdb
 C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\obj\Debug\net8.0\BookNest.genruntimeconfig.cache
 C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\obj\Debug\net8.0\ref\BookNest.dll
+C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\obj\Debug\net8.0\scopedcss\Areas\Admin\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\bin\Debug\net8.0\PagedList.dll
+C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\bin\Debug\net8.0\PagedList.Mvc.dll
+C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\bin\Debug\net8.0\CloudinaryDotNet.dll
+C:\Users\7713b\OneDrive\Documents\OneDrive\Computer\uit\hk6\framework\BookNest\bin\Debug\net8.0\dotenv.net.dll
