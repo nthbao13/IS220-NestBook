@@ -75,6 +75,9 @@ namespace BookNest.Areas.Customer.Controllers
             {
                 var roles = await _userManager.GetRolesAsync(user);
 
+                HttpContext.Session.SetString("FirstName", user.FirstName);
+                HttpContext.Session.SetString("LastName", user.LastName);
+
                 if (roles.Contains("Admin"))
                 {
                     return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
@@ -149,7 +152,7 @@ namespace BookNest.Areas.Customer.Controllers
                             Console.WriteLine($"Email sending failed but user created: {emailEx.Message}");
                         }
 
-                        return RedirectToAction("Login", "Account");
+                        return RedirectToAction("NotifyConfirmEmail", "Account");
                     }
 
                     ViewBag.ErrorMessage = string.Join("<br/>", result.Errors.Select(e => e.Description));
@@ -192,6 +195,11 @@ namespace BookNest.Areas.Customer.Controllers
             HttpContext.Session.SetString("email", email);
 
             return RedirectToAction("EnterOTP");
+        }
+
+        public IActionResult NotifyConfirmEmail()
+        {
+            return View();
         }
 
         [HttpGet]
@@ -512,6 +520,11 @@ namespace BookNest.Areas.Customer.Controllers
             {
                 return Json(new List<object>());
             }
+        }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
 
         [HttpPost]

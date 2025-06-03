@@ -14,7 +14,7 @@
 // Biến để ngăn request trùng lặp
 let isAddingToCart = false;
 
-function addToCart(productId, quantity = 1) {
+function addToCart(productId, quantity) {
     // Ngăn request trùng lặp
     if (isAddingToCart) {
         console.log("Already adding to cart, please wait...");
@@ -72,8 +72,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 button.closest('[data-product-id]')?.dataset.productId;
 
             if (productId) {
-                console.log("Adding product to cart:", productId);
-                addToCart(productId);
+                const quantityInput = document.getElementById("quantity");
+                const currentQuantity = parseInt(quantityInput?.value) || 1;
+
+                console.log("Adding product to cart:", productId, "Quantity:", currentQuantity);
+                addToCart(productId, currentQuantity);
             } else {
                 showToast("Không tìm thấy thông tin sản phẩm", "danger");
                 console.error("Product ID not found for button:", button);

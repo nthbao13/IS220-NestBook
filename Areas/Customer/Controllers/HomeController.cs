@@ -59,7 +59,7 @@ namespace BookNest.Areas.Customer.Controllers
 
             var _HotBooks = await _context.Books
             .OrderBy(x => Guid.NewGuid())
-            .Take(6)
+            .Take(10)
             .Select(b => new BookViewModel
             {
                 Id = b.Id,

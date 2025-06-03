@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "+W4fGqtwWjc7IkAzVTsw2l8Ys+afewclyvRvagMhfUI=",
+  "Hash": "KEq83KO2h7dMQNI50qJZ8Ia3JVLwLZZZn+zAciywOF8=",
   "Source": "BookNest",
   "BasePath": "_content/BookNest",
   "Mode": "Default",
@@ -1193,6 +1193,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\BookNest.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\css\\admin_dashboard.css",
+      "SourceId": "BookNest",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\",
+      "BasePath": "_content/BookNest",
+      "RelativePath": "css/admin_dashboard.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\admin_dashboard.css"
     },
     {
       "Identity": "C:\\Users\\7713b\\OneDrive\\Documents\\OneDrive\\Computer\\uit\\hk6\\framework\\BookNest\\wwwroot\\css\\admin_site.css",

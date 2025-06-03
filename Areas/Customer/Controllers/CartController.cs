@@ -120,7 +120,7 @@ namespace BookNest.Areas.Customer.Controllers
 
         [HttpPost]
         public async Task<IActionResult> AddToCart([FromBody] AddToCartRequest request)
-        {
+            {
             if (request == null || request.productId <= 0)
             {
                 return Json(new { success = false, message = "Dữ liệu không hợp lệ!" });

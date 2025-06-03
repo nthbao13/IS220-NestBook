@@ -70,7 +70,7 @@ namespace BookNest.Areas.Admin.Controllers
             order.Status = "DELIVERED";
             await _context.SaveChangesAsync();
 
-            SendDeliveryNotificationEmail(order);
+            await SendDeliveryNotificationEmail(order);
 
             return RedirectToAction(nameof(Index));
         }

@@ -1,0 +1,75 @@
+﻿@{
+    ViewBag.Title = "Xác nhận Email - BookNest";
+    Layout = null; /* Hoặc Layout = "~/Views/Shared/_LayoutLogin.cshtml"; nếu bạn có layout riêng cho trang login */
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Xác nhận Email</title>
+    <style>
+        :root {
+          --primary-brown: #8B4513;
+          --secondary-brown: #A0522D;
+          --light-brown: #D2B48C;
+          --bg-cream: #f5f3f0;
+        }
+
+        body {
+          margin: 0;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          background-color: var(--bg-cream);
+          color: var(--primary-brown);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+        }
+
+        .notification-card {
+          background-color: white;
+          border: 1px solid var(--light-brown);
+          border-radius: 12px;
+          padding: 30px 40px;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+          text-align: center;
+          max-width: 400px;
+          width: 90%;
+        }
+
+        .notification-card h1 {
+          font-size: 1.8em;
+          color: var(--secondary-brown);
+          margin-bottom: 15px;
+        }
+
+        .notification-card p {
+          font-size: 1em;
+          margin-bottom: 25px;
+        }
+
+        .btn-resend {
+          background-color: var(--primary-brown);
+          color: white;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 8px;
+          font-size: 1em;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+
+        .btn-resend:hover {
+          background-color: var(--secondary-brown);
+        }
+    </style>
+</head>
+<body>
+    <div class="notification-card">
+        <h1>Xác nhận Email</h1>
+        <p>Chúng tôi đã gửi một email xác nhận đến địa chỉ email của bạn. Vui lòng kiểm tra hộp thư và xác nhận để có thể đăng nhập.</p>
+    </div>
+</body>
+</html>

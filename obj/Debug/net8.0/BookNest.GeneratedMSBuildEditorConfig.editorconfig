@@ -86,6 +86,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/7713b/OneDrive/Documents/OneDrive/Computer/uit/hk6/framework/BookNest/Areas/Customer/Views/Account/AccessDenied.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/7713b/OneDrive/Documents/OneDrive/Computer/uit/hk6/framework/BookNest/Areas/Customer/Views/Account/EnterEmail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcQWNjb3VudFxFbnRlckVtYWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -96,6 +100,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/7713b/OneDrive/Documents/OneDrive/Computer/uit/hk6/framework/BookNest/Areas/Customer/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/7713b/OneDrive/Documents/OneDrive/Computer/uit/hk6/framework/BookNest/Areas/Customer/Views/Account/NotifyConfirmEmail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcQWNjb3VudFxOb3RpZnlDb25maXJtRW1haWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/7713b/OneDrive/Documents/OneDrive/Computer/uit/hk6/framework/BookNest/Areas/Customer/Views/Account/Orders.cshtml]

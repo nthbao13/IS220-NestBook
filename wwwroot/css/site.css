@@ -1,33 +1,59 @@
 ﻿html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
-/* --------- _Layout.cshtml ---------- */
+
+/* --------- Base Styles ---------- */
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #FFFAF5;
+    margin: 0;
+    padding: 0;
 }
 
 .primary-color {
     color: #4C2900;
 }
 
+/* --------- Header Responsive ---------- */
+header {
+    background-color: #D2B48C !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.navbar-brand {
+    flex-shrink: 0;
+}
+
+    .navbar-brand img {
+        width: 40px;
+        height: auto;
+    }
+
+    .navbar-brand h3 {
+        font-size: 1.5rem;
+        margin: 0;
+    }
+
+/* Navigation Links */
 .navbar-nav .nav-link {
     position: relative;
+    padding: 0.5rem 1rem;
 }
 
     .navbar-nav .nav-link::after {
@@ -45,39 +71,64 @@ body {
         width: 100%;
     }
 
+/* Search Form Responsive */
+.search-form {
+    width: 100%;
+    max-width: 300px;
+    margin: 0.5rem 0;
+}
+
+    .search-form .input-group {
+        width: 100%;
+    }
+
+    .search-form input {
+        border: 1px solid #ccc;
+        border-radius: 4px 0 0 4px;
+        font-size: 14px;
+        flex: 1;
+    }
+
+    .search-form button {
+        background-color: #8B7355;
+        color: white;
+        border: 1px solid #8B7355;
+        border-radius: 0 4px 4px 0;
+        padding: 6px 12px;
+        white-space: nowrap;
+    }
+
+/* User Menu */
+.user-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    min-width: 160px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    padding: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s ease-in-out;
+}
+
+#userMenuContainer:hover .user-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* --------- Main Content ---------- */
 main {
     flex: 1 0 auto;
-    min-height: 100vh
+    min-height: 100vh;
 }
 
-
-footer {
-    background-color: #391F00;
-    color: #FFF;
-}
-
-footer a i {
-    text-decoration: none;
-    color: #FFF
-}
-
-footer ul {
-    padding: 0;
-    margin: 0;
-}
-
-footer li {
-    list-style: none;
-}
-
-footer li a {
-    color: #fff;
-    font-size: 14px;
-    text-decoration: none;
-}
-
-/* --------- About.cshtml ---------- */
-
+/* --------- About Page Responsive ---------- */
 .about-page {
     margin: 0 !important;
     padding: 0 !important;
@@ -89,13 +140,14 @@ footer li a {
 
 .welcome-section {
     background-color: #6E4B3A;
-    padding: 92px;
+    padding: 2rem;
+    text-align: center;
 }
 
 .description-section {
     background-color: #FFFAF5;
     color: #4B330B;
-    padding: 92px;
+    padding: 2rem;
     margin: 0;
     box-sizing: border-box;
     overflow: hidden;
@@ -105,14 +157,78 @@ footer li a {
         border-radius: 8px;
         padding: 0;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        height: auto;
     }
 
-/* General reset for smooth animations */
+/* --------- Footer Responsive ---------- */
+footer {
+    background-color: #391F00;
+    color: #FFF;
+    padding: 2rem 0;
+}
+
+    footer .container {
+        padding: 0 1rem;
+    }
+
+    footer .row {
+        margin: 0;
+    }
+
+    footer .col-2,
+    footer .col-3 {
+        margin-bottom: 1.5rem;
+    }
+
+    footer a i {
+        text-decoration: none;
+        color: #FFF;
+        font-size: 1.2rem;
+        margin: 0 0.5rem;
+    }
+
+    footer ul {
+        padding: 0;
+        margin: 0;
+    }
+
+    footer li {
+        list-style: none;
+        margin-bottom: 0.5rem;
+    }
+
+        footer li a {
+            color: #fff;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+    footer h5 {
+        margin-bottom: 1rem;
+        font-weight: bold;
+    }
+
+.social-icons {
+    margin: 1rem 0;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.contact-info {
+    margin-top: 1rem;
+}
+
+    .contact-info a {
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+/* --------- Animations ---------- */
 .about-page * {
     animation-fill-mode: both;
 }
 
-/* 1. Top Image Animation: Fade-in and Scale */
 .about-page img.w-100 {
     animation: fadeInScale 1s ease-out;
 }
@@ -129,7 +245,6 @@ footer li a {
     }
 }
 
-/* 2. Welcome Section: Sequential Fade-in and Slide-up */
 .welcome-section h3 {
     animation: fadeInUp 0.8s ease-out 0.2s;
 }
@@ -150,7 +265,6 @@ footer li a {
     }
 }
 
-/* 3. Slogan Animation: Subtle Pulse */
 .welcome-section h5 {
     animation: pulse 1.5s ease-in-out 0.6s;
 }
@@ -165,7 +279,6 @@ footer li a {
     }
 }
 
-/* 4. Description Section: Staggered Slide-in */
 .description-section p {
     animation: slideInLeft 0.8s ease-out 0.8s;
 }
@@ -198,31 +311,238 @@ footer li a {
     }
 }
 
-/* Ensure animations only run once on page load */
-.about-page [class*="animation"] {
-    animation-iteration-count: 1;
+/* --------- Mobile Responsive (max-width: 767px) ---------- */
+@media (max-width: 767px) {
+    /* Header Mobile */
+    .navbar-brand h3 {
+        font-size: 1.2rem;
+    }
+
+    .navbar-brand img {
+        width: 30px;
+    }
+
+    /* Hide search form on mobile navbar, show it below */
+    .navbar .search-form {
+        display: none;
+    }
+
+    /* Mobile search form */
+    .mobile-search {
+        background-color: #D2B48C;
+        padding: 0.5rem 1rem;
+        border-top: 1px solid rgba(0,0,0,0.1);
+    }
+
+        .mobile-search .search-form {
+            display: flex;
+            width: 100%;
+            max-width: none;
+            margin: 0;
+        }
+
+    /* Navigation collapse */
+    .navbar-collapse {
+        background-color: #D2B48C;
+        margin-top: 0.5rem;
+        padding: 1rem;
+        border-radius: 4px;
+    }
+
+    .navbar-nav {
+        text-align: center;
+    }
+
+        .navbar-nav .nav-item {
+            margin: 0.25rem 0;
+        }
+
+        /* User menu on mobile */
+        .navbar-nav .align-items-center {
+            flex-direction: row;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+    /* About page mobile */
+    .welcome-section {
+        padding: 1.5rem 1rem;
+    }
+
+        .welcome-section h3 {
+            font-size: 1.5rem;
+        }
+
+    .description-section {
+        padding: 1.5rem 1rem;
+    }
+
+    /* Footer mobile */
+    footer .row {
+        flex-direction: column;
+    }
+
+    footer .col-2,
+    footer .col-3 {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    footer .col-1 {
+        display: none;
+    }
+
+    footer .navbar-brand {
+        justify-content: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
 }
 
-.user-dropdown {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    min-width: 160px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 999;
-    padding: 10px;
-    /* Ẩn mặc định */
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: all 0.2s ease-in-out;
+/* --------- Tablet Responsive (768px - 991px) ---------- */
+@media (min-width: 768px) and (max-width: 991px) {
+    .navbar-brand h3 {
+        font-size: 1.3rem;
+    }
+
+    .search-form {
+        max-width: 250px;
+    }
+
+    .welcome-section {
+        padding: 3rem 2rem;
+    }
+
+    .description-section {
+        padding: 3rem 2rem;
+    }
+
+    /* Footer tablet */
+    footer .col-2 {
+        width: 45%;
+        margin: 1rem 2.5%;
+    }
+
+    footer .col-3 {
+        width: 45%;
+        margin: 1rem 2.5%;
+    }
 }
 
-#userMenuContainer:hover .user-dropdown {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+/* --------- Desktop Responsive (992px+) ---------- */
+@media (min-width: 992px) {
+    .welcome-section {
+        padding: 4rem 3rem;
+    }
+
+    .description-section {
+        padding: 4rem 3rem;
+    }
+
+    .search-form {
+        margin: 0 1rem;
+    }
+}
+
+/* --------- Large Desktop (1200px+) ---------- */
+@media (min-width: 1200px) {
+    .welcome-section {
+        padding: 5rem 4rem;
+    }
+
+    .description-section {
+        padding: 5rem 4rem;
+    }
+
+    .container-fluid {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+}
+
+/* --------- Utility Classes ---------- */
+.text-center {
+    text-align: center;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+.mb-0 {
+    margin-bottom: 0;
+}
+
+.me-2 {
+    margin-right: 0.5rem;
+}
+
+.me-3 {
+    margin-right: 1rem;
+}
+
+.pe-4 {
+    padding-right: 1.5rem;
+}
+
+.ps-4 {
+    padding-left: 1.5rem;
+}
+
+.fw-bold {
+    font-weight: bold;
+}
+
+.fs-5 {
+    font-size: 1.25rem;
+}
+
+/* --------- Alert Styles ---------- */
+.alert {
+    padding: 0.75rem 1.25rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    margin-bottom: 1rem;
+}
+
+.alert-warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeaa7;
+}
+
+/* --------- Position Utilities ---------- */
+.position-relative {
+    position: relative;
+}
+
+/* --------- Hide/Show Utilities ---------- */
+.d-none {
+    display: none !important;
+}
+
+@media (max-width: 575px) {
+    .d-sm-none {
+        display: none !important;
+    }
+}
+
+@media (min-width: 576px) {
+    .d-sm-inline-flex {
+        display: inline-flex !important;
+    }
 }

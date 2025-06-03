@@ -11,9 +11,15 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/css/admin_site.css">
-    <script src="https://cdn.tiny.cloud/1/9iiisfujq3rdqnoors2en5jg4dlgnk725l2ns4two71pmqqf/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/hveqdq6xzrjkoah3sp576mfbtsy6q2g0ldlwye0d2hhmksxk/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+
 </head>
 <body>
+    @{
+        var firstName = Context.Session.GetString("FirstName") ?? "";
+        var lastName = Context.Session.GetString("LastName") ?? "";
+    }
+
     <div class="d-flex">
         <!-- Sidebar -->
         <nav class="sidebar">
@@ -45,7 +51,7 @@
                 <h1 class="page-title">@ViewBag.Title</h1>
                 <div class="user-info">
                     <div class="user-avatar">NA</div>
-                    <span>Nguyen Van Admin</span>
+                    <span>@firstName @lastName</span>
                     <a href="/Customer/Account/Logout" class="btn btn-logout btn-sm">
                         <i class="fas fa-sign-out-alt me-1"></i>Đăng xuất
                     </a>

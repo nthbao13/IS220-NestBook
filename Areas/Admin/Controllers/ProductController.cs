@@ -25,9 +25,15 @@ namespace BookNest.Controllers
             _cloudinary = cloudinary;
         }
 
-        public async Task<IActionResult> Index(string searchString, string parentCategoryId, string publisherId, int page = 1)
+        public async Task<IActionResult> Index(string searchString, string parentCategoryId, string publisherId, int page = 1, int pageSize = 10)
         {
-            int pageSize = 10;
+            // Validate and set page size (limit to reasonable values)
+            pageSize = pageSize switch
+            {
+                10 or 25 or 50 or 100 => pageSize,
+                _ => 10 // Default to 10 if invalid value
+            };
+
             int pageNumber = page > 0 ? page : 1;
 
             var books = _context.Books
@@ -36,6 +42,7 @@ namespace BookNest.Controllers
                 .Include(b => b.Publisher)
                 .AsQueryable();
 
+            // Search filter
             if (!string.IsNullOrEmpty(searchString))
             {
                 books = books.Where(b => b.BookName.Contains(searchString));
@@ -56,21 +63,50 @@ namespace BookNest.Controllers
                 ViewBag.PublisherId = publisherId;
             }
 
-            // Pagination
+            // Get total count before pagination
             var totalItems = await books.CountAsync();
+
+            // Calculate total pages
+            int totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
+
+            // Ensure page number is within valid range
+            if (pageNumber > totalPages && totalPages > 0)
+            {
+                pageNumber = totalPages;
+            }
+
+            // Apply pagination
             var pagedBooks = await books
                 .OrderBy(b => b.Id)
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
-                .ToListAsync(); 
+                .ToListAsync();
 
-            ViewBag.ParentCategories = await _context.ParentCategories.ToListAsync();
-            ViewBag.Publishers = await _context.Publishers.ToListAsync();
+            // Populate ViewBag for dropdowns and pagination
+            ViewBag.ParentCategories = await _context.ParentCategories
+                .OrderBy(pc => pc.Type)
+                .ToListAsync();
+
+            ViewBag.Publishers = await _context.Publishers
+                .OrderBy(p => p.Name)
+                .ToListAsync();
+
+            // Pagination data
             ViewBag.PageNumber = pageNumber;
             ViewBag.PageSize = pageSize;
             ViewBag.TotalItems = totalItems;
+            ViewBag.TotalPages = totalPages;
 
-            return View(pagedBooks); 
+            // Keep search parameters for pagination links
+            ViewBag.CurrentFilters = new
+            {
+                SearchString = searchString,
+                ParentCategoryId = parentCategoryId,
+                PublisherId = publisherId,
+                PageSize = pageSize
+            };
+
+            return View(pagedBooks);
         }
 
         // GET: Product/Details/5
@@ -102,7 +138,7 @@ namespace BookNest.Controllers
 
         // POST: Product/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpPost]
         public async Task<IActionResult> Edit(Book book, IFormFile ImageFile)
         {
             if (book == null)
@@ -110,10 +146,34 @@ namespace BookNest.Controllers
                 return NotFound();
             }
 
+            ModelState.Remove("ImageFile");
+
             if (ModelState.IsValid)
             {
                 try
                 {
+                    // Lấy entity hiện tại từ database
+                    var existingBook = await _context.Books.FindAsync(book.Id);
+                    if (existingBook == null)
+                    {
+                        return NotFound();
+                    }
+
+                    // Cập nhật các thuộc tính
+                    existingBook.BookName = book.BookName;
+                    existingBook.Isbn = book.Isbn;
+                    existingBook.Author = book.Author;
+                    existingBook.YearPublished = book.YearPublished;
+                    existingBook.Pages = book.Pages;
+                    existingBook.ImportPrice = book.ImportPrice;
+                    existingBook.FirstPrice = book.FirstPrice;
+                    existingBook.SecondPrice = book.SecondPrice;
+                    existingBook.Quantity = book.Quantity;
+                    existingBook.CategoryId = book.CategoryId;
+                    existingBook.PublisherId = book.PublisherId;
+                    existingBook.Description = book.Description;
+
+                    // Xử lý upload ảnh
                     if (ImageFile != null && ImageFile.Length > 0)
                     {
                         using (var stream = ImageFile.OpenReadStream())
@@ -123,13 +183,13 @@ namespace BookNest.Controllers
                                 File = new FileDescription(ImageFile.FileName, stream),
                                 Folder = "Book_cover"
                             };
-
                             var uploadResult = _cloudinary.Upload(uploadParam);
-                            book.ImageUrl = uploadResult.SecureUrl.ToString();
+                            existingBook.ImageUrl = uploadResult.SecureUrl.ToString();
                         }
                     }
-                    _context.Update(book);
+
                     await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -139,9 +199,9 @@ namespace BookNest.Controllers
                     }
                     throw;
                 }
-                return RedirectToAction(nameof(Index));
             }
 
+            // Nếu ModelState không valid, load lại data cho dropdown
             ViewBag.Categories = await _context.Categories
                 .Include(c => c.ParentCategory)
                 .ToListAsync();

@@ -9,161 +9,229 @@
     var fullDateString = $"{dayOfWeek}, {formattedDate}";
 }
 
-<div class="row mb-4">
-    <div class="col-12">
-        <div class="d-flex justify-content-between align-items-center">
-            <p class="text-muted mb-0">@fullDateString</p>
-        </div>
-    </div>
-</div>
+<link rel="stylesheet" href="/css/admin_dashboard.css">
 
-<!-- Statistics Cards -->
-<div class="row g-4 mb-5">
-    <div class="col-lg-4 col-md-6">
-        <div class="stat-card h-100">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <div class="stat-number">@Model.TotalRevenue.ToString("N0") đ</div>
-                    <div class="stat-label">Tổng doanh thu</div>
+<div class="dashboard-container">
+    <div class="container-fluid">
+        <!-- Welcome Section -->
+        <div class="welcome-card fade-in">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h1 class="display-6 fw-bold mb-2">
+                        <i class="fas fa-chart-line me-3"></i>Dashboard
+                    </h1>
+                    <p class="lead mb-0 text-muted">
+                        <i class="fas fa-calendar-alt me-2"></i>@fullDateString
+                    </p>
                 </div>
-                <div class="text-primary">
-                    <i class="fas fa-money-bill-wave fa-2x"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-lg-4 col-md-6">
-        <div class="stat-card h-100">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <div class="stat-number">@Model.TotalOrders</div>
-                    <div class="stat-label">Tổng đơn đặt hàng</div>
-                </div>
-                <div class="text-primary">
-                    <i class="fas fa-shopping-cart fa-2x"></i>
+                <div class="col-md-4 text-end d-none d-md-block">
+                    <div class="pulse-animation">
+                        <i class="fas fa-tachometer-alt" style="font-size: 4rem; color: #667eea;"></i>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="col-lg-4 col-md-6">
-        <div class="stat-card h-100">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <div class="stat-number">@Model.NewCustomers</div>
-                    <div class="stat-label">Tổng khách hàng mới</div>
+        <!-- Statistics Cards -->
+        <div class="row g-4 mb-5">
+            <div class="col-xl-3 col-lg-6 col-md-6 fade-in" style="animation-delay: 0.1s;">
+                <div class="stat-card">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="flex-grow-1">
+                            <div class="stat-number">@Model.TotalRevenue.ToString("N0")</div>
+                            <div class="stat-label">Tổng doanh thu</div>
+                            <small class="text-success">
+                                <i class="fas fa-arrow-up me-1"></i>+12% so với tháng trước
+                            </small>
+                        </div>
+                        <div class="stat-icon revenue">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                    </div>
                 </div>
-                <div class="text-primary">
-                    <i class="fas fa-user-plus fa-2x"></i>
+            </div>
+
+            <div class="col-xl-3 col-lg-6 col-md-6 fade-in" style="animation-delay: 0.2s;">
+                <div class="stat-card">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="flex-grow-1">
+                            <div class="stat-number">@Model.TotalOrders</div>
+                            <div class="stat-label">Tổng đơn hàng</div>
+                            <small class="text-info">
+                                <i class="fas fa-clock me-1"></i>@Model.TotalOrders đơn hôm nay
+                            </small>
+                        </div>
+                        <div class="stat-icon orders">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-6 col-md-6 fade-in" style="animation-delay: 0.3s;">
+                <div class="stat-card">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="flex-grow-1">
+                            <div class="stat-number">@Model.NewCustomers</div>
+                            <div class="stat-label">Khách hàng mới</div>
+                            <small class="text-warning">
+                                <i class="fas fa-user-plus me-1"></i>Trong tháng này
+                            </small>
+                        </div>
+                        <div class="stat-icon customers">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-6 col-md-6 fade-in" style="animation-delay: 0.4s;">
+                <div class="stat-card">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="flex-grow-1">
+                            <div class="stat-number">@(Model.TopProducts?.Count() ?? 0)</div>
+                            <div class="stat-label">Sản phẩm bán chạy</div>
+                            <small class="text-primary">
+                                <i class="fas fa-star me-1"></i>Top sản phẩm tuần
+                            </small>
+                        </div>
+                        <div class="stat-icon products">
+                            <i class="fas fa-box"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
-<!-- Charts and Recent Activity -->
-<div class="row g-4">
-    <div class="col-lg-8">
-        <div class="card">
-            <div class="card-header bg-light">
-                <h5 class="card-title mb-0">
-                    <i class="fas fa-chart-line me-2"></i>Biểu đồ doanh thu
-                </h5>
+        <!-- Charts and Recent Activity -->
+        <div class="row g-4 mb-5">
+            <div class="col-lg-8 fade-in" style="animation-delay: 0.5s;">
+                <div class="content-card">
+                    <div class="card-header-custom">
+                        <h5 class="mb-0 fw-bold">
+                            <i class="fas fa-chart-area me-2"></i>Biểu đồ doanh thu 7 ngày qua
+                        </h5>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="revenueChart" width="400" height="300"></canvas>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <canvas id="revenueChart" width="400" height="360"></canvas>
-            </div>
-        </div>
-    </div>
 
-    <div class="col-lg-4">
-        <div class="card">
-            <div class="card-header bg-light">
-                <h5 class="card-title mb-0">
-                    <i class="fas fa-clock me-2"></i>Đơn hàng gần đây
-                </h5>
-            </div>
-            <div class="card-body">
-                @if (Model.RecentOrders != null && Model.RecentOrders.Any())
-                {
-                    <div class="list-group list-group-flush">
-                        @foreach (var order in Model.RecentOrders.Take(3))
+            <div class="col-lg-4 fade-in" style="animation-delay: 0.6s;">
+                <div class="content-card">
+                    <div class="card-header-custom">
+                        <h5 class="mb-0 fw-bold">
+                            <i class="fas fa-clock me-2"></i>Đơn hàng gần đây
+                        </h5>
+                    </div>
+                    <div class="p-3">
+                        @if (Model.RecentOrders != null && Model.RecentOrders.Any())
                         {
-                            <div class="list-group-item border-0 px-0">
-                                <div class="d-flex justify-content-between align-items-start">
-                                    <div class="flex-grow-1">
-                                        <h6 class="mb-1">Đơn #@order.OrderId</h6>
-                                        <p class="mb-1 small text-muted">@order.CustomerName</p>
-                                        <small class="text-muted">@order.OrderDate.ToString("dd/MM/yyyy HH:mm")</small>
-                                    </div>
-                                    <div class="text-end">
-                                        <span class="badge bg-success">@order.Amount.ToString("N0")đ</span>
+                            @foreach (var order in Model.RecentOrders.Take(5))
+                            {
+                                <div class="recent-order-item">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-1 fw-bold">#@order.OrderId</h6>
+                                            <p class="mb-1 text-muted">
+                                                <i class="fas fa-user me-1"></i>@order.CustomerName
+                                            </p>
+                                            <small class="text-muted">
+                                                <i class="fas fa-calendar me-1"></i>@order.OrderDate.ToString("dd/MM/yyyy HH:mm")
+                                            </small>
+                                        </div>
+                                        <div class="text-end">
+                                            <span class="order-badge">@order.Amount.ToString("N0")đ</span>
+                                        </div>
                                     </div>
                                 </div>
+                            }
+                        }
+                        else
+                        {
+                            <div class="empty-state">
+                                <i class="fas fa-inbox"></i>
+                                <p class="mb-0">Chưa có đơn hàng nào</p>
+                            </div>
+                        }
+
+                        <div class="text-center mt-3">
+                            <a href="@Url.Action("Index", "Order")" class="modern-btn">
+                                <i class="fas fa-arrow-right me-2"></i>Xem tất cả
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Products -->
+        <div class="row fade-in" style="animation-delay: 0.7s;">
+            <div class="col-12">
+                <div class="content-card">
+                    <div class="card-header-custom">
+                        <h5 class="mb-0 fw-bold">
+                            <i class="fas fa-fire me-2"></i>Sản phẩm bán chạy nhất
+                        </h5>
+                    </div>
+                    <div class="p-3">
+                        @if (Model.TopProducts != null && Model.TopProducts.Any())
+                        {
+                            <div class="table-responsive">
+                                <table class="table table-modern">
+                                    <thead>
+                                        <tr>
+                                            <th><i class="fas fa-trophy me-2"></i>Xếp hạng</th>
+                                            <th><i class="fas fa-book me-2"></i>Tên sản phẩm</th>
+                                            <th><i class="fas fa-pen me-2"></i>Tác giả</th>
+                                            <th><i class="fas fa-chart-bar me-2"></i>Số lượng bán</th>
+                                            <th><i class="fas fa-percentage me-2"></i>Tỷ lệ</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+                                            var rank = 1;
+                                            var totalSold = Model.TopProducts.Sum(p => p.SoldQuantity);
+                                        }
+                                        @foreach (var product in Model.TopProducts.Take(5))
+                                        {
+                                            var percentage = totalSold > 0 ? (product.SoldQuantity * 100.0 / totalSold) : 0;
+                                            <tr>
+                                                <td>
+                                                    <span class="badge" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white;">
+                                                        #@rank
+                                                    </span>
+                                                </td>
+                                                <td class="fw-semibold">@product.ProductName</td>
+                                                <td>
+                                                    <span class="badge bg-info">@product.Author</span>
+                                                </td>
+                                                <td>
+                                                    <span class="fw-bold text-success">@product.SoldQuantity</span>
+                                                </td>
+                                                <td>
+                                                    <div class="progress" style="height: 8px; background-color: rgba(102, 126, 234, 0.1);">
+                                                        <div class="progress-bar" style="background: linear-gradient(135deg, #667eea, #764ba2); width: @percentage%"></div>
+                                                    </div>
+                                                    <small class="text-muted">@percentage.ToString("F1")%</small>
+                                                </td>
+                                            </tr>
+                                            rank++;
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="empty-state">
+                                <i class="fas fa-box-open"></i>
+                                <p class="mb-0">Chưa có dữ liệu sản phẩm</p>
                             </div>
                         }
                     </div>
-                }
-                else
-                {
-                    <div class="text-center text-muted py-4">
-                        <i class="fas fa-inbox fa-2x mb-3"></i>
-                        <p>Chưa có đơn hàng nào</p>
-                    </div>
-                }
-
-                <div class="text-center mt-3">
-                    <a href="@Url.Action("Index", "Order")" class="btn btn-outline-primary btn-sm">
-                        Xem tất cả đơn hàng
-                    </a>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Top Products -->
-<div class="row mt-4">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header bg-light">
-                <h5 class="card-title mb-0">
-                    <i class="fas fa-star me-2"></i>Sản phẩm bán chạy
-                </h5>
-            </div>
-            <div class="card-body">
-                @if (Model.TopProducts != null && Model.TopProducts.Any())
-                {
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Tên sản phẩm</th>
-                                    <th>Tác giả</th>
-                                    <th>Số lượng bán</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var product in Model.TopProducts.Take(5))
-                                {
-                                    <tr>
-                                        <td>@product.ProductName</td>
-                                        <td><span class="badge bg-info">@product.Author</span></td>
-                                        <td class="text-success fw-bold">@product.SoldQuantity</td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </div>
-                }
-                else
-                {
-                    <div class="text-center text-muted py-4">
-                        <i class="fas fa-box-open fa-2x mb-3"></i>
-                        <p>Chưa có dữ liệu sản phẩm</p>
-                    </div>
-                }
             </div>
         </div>
     </div>
@@ -171,31 +239,117 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
+    // Enhanced Chart Configuration
     const ctx = document.getElementById('revenueChart').getContext('2d');
     const revenueChart = new Chart(ctx, {
-        type: 'bar',
+        type: 'line',
         data: {
             labels: @Html.Raw(Json.Serialize(ViewBag.ChartLabels)),
             datasets: [{
-                label: 'Doanh thu trong tuần này',
+                label: 'Doanh thu (VNĐ)',
                 data: @Html.Raw(Json.Serialize(ViewBag.ChartData)),
-                backgroundColor: 'rgba(75, 192, 192, 0.6)',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 1
+                borderColor: '#667eea',
+                backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                borderWidth: 3,
+                fill: true,
+                tension: 0.4,
+                pointBackgroundColor: '#667eea',
+                pointBorderColor: '#ffffff',
+                pointBorderWidth: 3,
+                pointRadius: 6,
+                pointHoverRadius: 8,
+                pointHoverBackgroundColor: '#764ba2',
+                pointHoverBorderColor: '#ffffff',
+                pointHoverBorderWidth: 3
             }]
         },
         options: {
-            responsive: false,
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                    titleColor: '#ffffff',
+                    bodyColor: '#ffffff',
+                    borderColor: '#667eea',
+                    borderWidth: 1,
+                    cornerRadius: 10,
+                    displayColors: false,
+                    callbacks: {
+                        label: function(context) {
+                            return 'Doanh thu: ' + context.parsed.y.toLocaleString('vi-VN') + ' đ';
+                        }
+                    }
+                }
+            },
             scales: {
+                x: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        color: '#6c757d',
+                        font: {
+                            weight: '600'
+                        }
+                    }
+                },
                 y: {
                     beginAtZero: true,
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.05)',
+                        borderDash: [5, 5]
+                    },
                     ticks: {
+                        color: '#6c757d',
+                        font: {
+                            weight: '600'
+                        },
                         callback: function (value) {
                             return value.toLocaleString('vi-VN') + ' đ';
                         }
                     }
                 }
+            },
+            interaction: {
+                intersect: false,
+                mode: 'index'
+            },
+            elements: {
+                point: {
+                    hoverRadius: 8
+                }
+            },
+            animation: {
+                duration: 2000,
+                easing: 'easeInOutQuart'
             }
         }
+    });
+
+    // Add smooth scrolling and loading animations
+    document.addEventListener('DOMContentLoaded', function() {
+        // Counter animation for statistics
+        const counters = document.querySelectorAll('.stat-number');
+        counters.forEach(counter => {
+            const target = parseInt(counter.innerText.replace(/[^\d]/g, ''));
+            const increment = target / 100;
+            let current = 0;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                counter.innerText = Math.floor(current).toLocaleString('vi-VN');
+                if (counter.innerText.includes('đ')) {
+                    counter.innerText = Math.floor(current).toLocaleString('vi-VN') + ' đ';
+                }
+            }, 20);
+        });
     });
 </script>

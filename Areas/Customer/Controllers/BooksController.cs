@@ -207,6 +207,18 @@ namespace BookNest.Areas.Customer.Controllers
                 });
             }
 
+            var ratingStats = new RatingStatistics();
+
+            if (ratingList != null && ratingList.Any())
+            {
+                ratingStats.TotalCount = ratingList.Count;
+                ratingStats.FiveStarCount = ratingList.Count(r => r.rating == 5);
+                ratingStats.FourStarCount = ratingList.Count(r => r.rating == 4);
+                ratingStats.ThreeStarCount = ratingList.Count(r => r.rating == 3);
+                ratingStats.TwoStarCount = ratingList.Count(r => r.rating == 2);
+                ratingStats.OneStarCount = ratingList.Count(r => r.rating == 1);
+            }
+
             // Tạo ViewModel
             BookDetailViewModel bookDetailViewModel = new BookDetailViewModel
             {

@@ -67,6 +67,9 @@
     transition: transform 0.5s ease, z-index 0.3s ease;
     opacity: 0;
     animation: slideIn 1.2s ease-out forwards;
+    /* Đảm bảo tỷ lệ khung hình đồng nhất */
+    aspect-ratio: 3/4;
+    object-fit: cover;
 }
 
 @keyframes slideIn {
@@ -184,6 +187,8 @@
     object-fit: cover;
     border-radius: 50%;
     margin-bottom: 10px;
+    /* Đảm bảo tất cả icon đều có kích thước đồng nhất */
+    aspect-ratio: 1/1;
 }
 
 .book-card {
@@ -192,9 +197,14 @@
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     transition: transform 0.3s, box-shadow 0.3s;
     margin-bottom: 20px;
-    height: 380px;
-    z-index:1;
+    z-index: 1;
     overflow: hidden;
+    /* Đảm bảo tất cả card có cùng kích thước */
+    width: 200px;
+    height: 380px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
 }
 
     .book-card:hover {
@@ -206,7 +216,12 @@
     width: 100%;
     height: 200px;
     object-fit: cover;
+    object-position: center;
     border-radius: 10px 10px 0 0;
+    flex-shrink: 0;
+    /* Bắt buộc tất cả ảnh có cùng kích thước */
+    min-height: 200px;
+    max-height: 200px;
 }
 
 .book-title {
@@ -219,18 +234,23 @@
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    line-height: 1.4;
 }
 
 .book-author {
     font-size: 12px;
     color: #666;
     margin-bottom: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .book-price {
     color: #E16A00;
     font-weight: bold;
     font-size: 16px;
+    margin-top: auto;
 }
 
 .original-price {
@@ -254,7 +274,7 @@
     position: absolute;
     top: 10px;
     right: 10px;
-   z-index: 3;
+    z-index: 3;
 }
 
 .rating {
@@ -308,10 +328,9 @@
 
 .books-carousel {
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     z-index: 100;
-    overflow: visible; /* thay vì hidden */
-    padding: 0 50px; /* tạo chỗ cho button */
+    padding: 0 50px;
 }
 
 .books-row {
@@ -353,12 +372,86 @@
     }
 
     .carousel-btn.prev {
-        left: -10px;
+        left: 10px;
     }
 
     .carousel-btn.next {
-        right: -10px;
+        right: 10px;
     }
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .container-index {
+        margin: 20px 30px !important;
+    }
+
+    .container-img {
+        width: 500px;
+        height: 300px;
+    }
+
+    .img-book {
+        width: 120px;
+    }
+}
+
+@media (max-width: 992px) {
+    .container-index {
+        margin: 15px 20px !important;
+    }
+
+    .container-welcome-section {
+        padding: 30px 20px;
+        min-height: 350px;
+    }
+
+    .container-img {
+        width: 400px;
+        height: 250px;
+        margin-left: 20px;
+    }
+
+    .img-book {
+        width: 100px;
+    }
+
+    .book1 {
+        transform: translateX(-150px) scale(0.8) rotate(-5deg);
+    }
+
+    .book2 {
+        transform: translateX(-75px) scale(0.9) rotate(-2deg);
+    }
+
+    .book3 {
+        transform: translateX(0) scale(1.1);
+    }
+
+    .book4 {
+        transform: translateX(75px) scale(0.9) rotate(2deg);
+    }
+
+    .book5 {
+        transform: translateX(150px) scale(0.8) rotate(5deg);
+    }
+
+    .books-carousel {
+        padding: 0 40px;
+    }
+
+    .books-row .book-card {
+        width: 180px !important;
+        height: 350px !important;
+    }
+
+    .book-card .book-image {
+        height: 180px !important;
+    }
+
+    .book-card .p-3 {
+        height: 170px;
+    }
+}
 
 @media (max-width: 768px) {
     .container-index {
@@ -369,46 +462,215 @@
         flex-direction: column;
         text-align: center;
         padding: 30px 20px;
+        min-height: 300px;
     }
 
     .container-img {
         width: 100%;
-        height: 250px;
+        height: 200px;
         margin-left: 0;
         margin-top: 20px;
     }
 
     .img-book {
-        width: 100px;
+        width: 80px;
     }
 
     .book1 {
-        transform: translateX(-120px) scale(0.8);
+        transform: translateX(-100px) scale(0.75) rotate(-5deg);
     }
 
     .book2 {
-        transform: translateX(-60px) scale(0.9);
+        transform: translateX(-50px) scale(0.85) rotate(-2deg);
     }
 
     .book3 {
-        transform: translateX(0) scale(1.1);
+        transform: translateX(0) scale(1);
     }
 
     .book4 {
-        transform: translateX(60px) scale(0.9);
+        transform: translateX(50px) scale(0.85) rotate(2deg);
     }
 
     .book5 {
-        transform: translateX(120px) scale(0.8);
+        transform: translateX(100px) scale(0.75) rotate(5deg);
+    }
+
+    .books-carousel {
+        padding: 0 30px;
+    }
+
+    .books-row .book-card {
+        width: 160px !important;
+        height: 320px !important;
+    }
+
+    .book-card .book-image {
+        height: 160px !important;
+    }
+
+    .book-card .p-3 {
+        height: 160px;
+        padding: 12px;
+    }
+
+    .book-title {
+        font-size: 13px;
+        height: 35px;
+    }
+
+    .section-title {
+        font-size: 20px;
+    }
+
+    .category-icon {
+        width: 60px;
+        height: 60px;
     }
 }
 
-.carousel-btn.prev {
-    left: 10px; /* thay vì -10px */
+@media (max-width: 576px) {
+    .container-welcome-section {
+        padding: 20px 15px;
+    }
+
+    .container-img {
+        height: 150px;
+    }
+
+    .img-book {
+        width: 60px;
+    }
+
+    .book1 {
+        transform: translateX(-80px) scale(0.7) rotate(-5deg);
+    }
+
+    .book2 {
+        transform: translateX(-40px) scale(0.8) rotate(-2deg);
+    }
+
+    .book3 {
+        transform: translateX(0) scale(0.9);
+    }
+
+    .book4 {
+        transform: translateX(40px) scale(0.8) rotate(2deg);
+    }
+
+    .book5 {
+        transform: translateX(80px) scale(0.7) rotate(5deg);
+    }
+
+    .books-carousel {
+        padding: 0 20px;
+    }
+
+    .books-row .book-card {
+        width: 140px !important;
+        height: 300px !important;
+    }
+
+    .book-card .book-image {
+        height: 140px !important;
+    }
+
+    .book-card .p-3 {
+        height: 160px;
+        padding: 10px;
+    }
+
+    .book-title {
+        font-size: 12px;
+        height: 32px;
+    }
+
+    .book-author {
+        font-size: 11px;
+    }
+
+    .book-price {
+        font-size: 14px;
+    }
+
+    .section-title {
+        font-size: 18px;
+    }
+
+    .category-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .search-input {
+        padding: 10px 100px 10px 15px;
+        font-size: 14px;
+    }
+
+    .search-btn {
+        padding: 6px 15px;
+        font-size: 14px;
+    }
 }
 
-.carousel-btn.next {
-    right: 10px; /* thay vì -10px */
+/* Đảm bảo tất cả ảnh đều có tỷ lệ đồng nhất */
+img {
+    max-width: 100%;
+    height: auto;
 }
 
+/* Force uniform sizing cho book images */
+.book-card .book-image {
+    width: 100% !important;
+    height: 200px !important;
+    object-fit: cover !important;
+    object-position: center !important;
+}
 
+/* Force uniform sizing cho tất cả book cards */
+.books-row .book-card {
+    width: 200px !important;
+    height: 380px !important;
+    flex-shrink: 0 !important;
+}
+
+/* Đảm bảo content bên trong card được phân bố đều */
+.book-card .p-3 {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    height: 180px; /* Chiều cao cố định cho phần text */
+    justify-content: space-between;
+}
+
+/* Cải thiện hiển thị grid responsive cho category */
+@media (max-width: 768px) {
+    .category-section .row {
+        justify-content: center;
+    }
+
+    .category-item {
+        margin-bottom: 15px;
+    }
+}
+
+/* Đảm bảo carousel hoạt động tốt trên mobile */
+@media (max-width: 768px) {
+    .books-row {
+        gap: 15px;
+        padding: 0 5px;
+    }
+
+    .carousel-btn {
+        width: 35px;
+        height: 35px;
+    }
+
+        .carousel-btn.prev {
+            left: 5px;
+        }
+
+        .carousel-btn.next {
+            right: 5px;
+        }
+}

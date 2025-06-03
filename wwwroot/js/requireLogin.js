@@ -85,7 +85,7 @@ function createLoginPopup() {
 
     // Sự kiện nút
     document.getElementById('login-popup-login-btn').addEventListener('click', () => {
-        window.location.href = '/Account/Login'; // Đường dẫn login sửa theo app bạn
+        window.location.href = '/Customer/Account/Login'; // Đường dẫn login sửa theo app bạn
     });
     document.getElementById('login-popup-cancel-btn').addEventListener('click', () => {
         hideLoginPopup();

@@ -12,5 +12,7 @@ namespace BookNest.Models.ViewModel.BookHandleViewModel
 
         public decimal AverageRating { get; set; }
         public int TotalRatings { get; set; }
+
+        public RatingStatistics RatingStats { get; set; }
     }
 }
