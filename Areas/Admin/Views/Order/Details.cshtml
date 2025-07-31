@@ -41,8 +41,8 @@
                         <tr>
                             <td>@detail.Book?.BookName</td>
                             <td>@detail.Quantity</td>
-                            <td>@detail.Book.SecondPrice.?.ToString("N0") VNĐ</td>
-                            <td>@(detail.Quantity * detail.Book.SecondPrice)?.ToString("N0") VNĐ</td>
+                            <td>@detail.Book.SecondPrice VNĐ</td>
+                            <td>@(detail.Quantity * detail.Book.SecondPrice) VNĐ</td>
                         </tr>
                     }
                 </tbody>
